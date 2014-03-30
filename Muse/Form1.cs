@@ -16,5 +16,16 @@ namespace Muse
         {
             InitializeComponent();
         }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Nama " + txtName.Text + " Alamat " + txtAddress.Text + 
+                " Telepon " + txtPhone.Text + " Gender " + cboGender.Text + " Email " + txtEmail.Text);
+        }
+
+        private void cboGender_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }
