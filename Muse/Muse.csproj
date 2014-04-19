@@ -65,17 +65,65 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Employee.cs">
+    <Compile Include="FormAddOrder.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Employee.Designer.cs">
-      <DependentUpon>Employee.cs</DependentUpon>
+    <Compile Include="FormAddOrder.Designer.cs">
+      <DependentUpon>FormAddOrder.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="FormAddProduct.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormAddProduct.Designer.cs">
+      <DependentUpon>FormAddProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAddUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddUser.Designer.cs">
+      <DependentUpon>FormAddUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAddCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddCustomer.Designer.cs">
+      <DependentUpon>FormAddCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormBillList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBillList.Designer.cs">
+      <DependentUpon>FormBillList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCustomerList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCustomerList.Designer.cs">
+      <DependentUpon>FormCustomerList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormOrderList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormOrderList.Designer.cs">
+      <DependentUpon>FormOrderList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormProductList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormProductList.Designer.cs">
+      <DependentUpon>FormProductList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormUserList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUserList.Designer.cs">
+      <DependentUpon>FormUserList.cs</DependentUpon>
     </Compile>
     <Compile Include="irestaurantDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -84,11 +132,35 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Employee.resx">
-      <DependentUpon>Employee.cs</DependentUpon>
+    <EmbeddedResource Include="FormAddOrder.resx">
+      <DependentUpon>FormAddOrder.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="FormAddProduct.resx">
+      <DependentUpon>FormAddProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAddUser.resx">
+      <DependentUpon>FormAddUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAddCustomer.resx">
+      <DependentUpon>FormAddCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormBillList.resx">
+      <DependentUpon>FormBillList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCustomerList.resx">
+      <DependentUpon>FormCustomerList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormOrderList.resx">
+      <DependentUpon>FormOrderList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormProductList.resx">
+      <DependentUpon>FormProductList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUserList.resx">
+      <DependentUpon>FormUserList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -11,9 +11,9 @@ using System.Data.SqlClient;
 
 namespace Muse
 {
-    public partial class Form1 : Form
+    public partial class FormAddCustomer : Form
     {
-        public Form1()
+        public FormAddCustomer()
         {
             InitializeComponent();
         }

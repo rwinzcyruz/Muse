@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Muse
 {
-    public partial class Employee : Form
+    public partial class FormAddUser : Form
     {
-        public Employee()
+        public FormAddUser()
         {
             InitializeComponent();
         }
