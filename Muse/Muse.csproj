@@ -65,6 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbManager.cs" />
     <Compile Include="FormAddOrder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +131,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>irestaurantDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Model\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormAddOrder.resx">

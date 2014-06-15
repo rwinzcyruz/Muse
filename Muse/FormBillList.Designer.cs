@@ -35,9 +35,9 @@
             this.button4 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -112,14 +112,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Beranda";
             // 
-            // button5
+            // button7
             // 
-            this.button5.Location = new System.Drawing.Point(128, 19);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(149, 23);
-            this.button5.TabIndex = 0;
-            this.button5.Text = "Lihat Daftar Pelanggan";
-            this.button5.UseVisualStyleBackColor = true;
+            this.button7.Location = new System.Drawing.Point(7, 19);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(115, 23);
+            this.button7.TabIndex = 0;
+            this.button7.Text = "Lihat Daftar Produk";
+            this.button7.UseVisualStyleBackColor = true;
             // 
             // button6
             // 
@@ -130,14 +130,14 @@
             this.button6.Text = "Lihat Daftar Pengguna";
             this.button6.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // button5
             // 
-            this.button7.Location = new System.Drawing.Point(7, 19);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(115, 23);
-            this.button7.TabIndex = 0;
-            this.button7.Text = "Lihat Daftar Produk";
-            this.button7.UseVisualStyleBackColor = true;
+            this.button5.Location = new System.Drawing.Point(128, 19);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(149, 23);
+            this.button5.TabIndex = 0;
+            this.button5.Text = "Lihat Daftar Pelanggan";
+            this.button5.UseVisualStyleBackColor = true;
             // 
             // FormBillList
             // 
