@@ -31,7 +31,7 @@ namespace Muse
 
             if (User.Login(username, password))
             {
-                var form = new FormBillList();
+                var form = new FormContainer();
                 form.Show();
                 this.Hide();
             }
