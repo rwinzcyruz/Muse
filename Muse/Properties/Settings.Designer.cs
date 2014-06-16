@@ -22,15 +22,5 @@ namespace Muse.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=WINDOWS7-PC;Initial Catalog=irestaurant;Integrated Security=True")]
-        public string irestaurantConnectionString {
-            get {
-                return ((string)(this["irestaurantConnectionString"]));
-            }
-        }
     }
 }
