@@ -26,8 +26,8 @@ namespace Muse
 
         private void menuLogout_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            foreach (var form in this.MdiChildren)
+            Hide();
+            foreach (var form in MdiChildren)
             {
                 form.Close();
             }
@@ -41,18 +41,41 @@ namespace Muse
             _ActivateForm(tag);
         }
 
+        private void menuWindowsCascade_Click(object sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.Cascade);
+        }
+
+        private void menuWindowsTileVertical_Click(object sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.TileVertical);
+        }
+
+        private void menuWindowsTileHorizontal_Click(object sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.TileHorizontal);
+        }
+
+        private void menuWindowsCloseAll_Click(object sender, EventArgs e)
+        {
+            foreach (var form in MdiChildren)
+            {
+                form.Close();
+            }
+        }
+
         private void _Login()
         {
             var result = _formLogin.ShowDialog();
             switch (result)
             {
                 case DialogResult.OK:
-                    this.Show();
-                    this.Focus();
+                    Show();
+                    Focus();
                     _ActivateForm("FormBillList");
                     break;
                 case DialogResult.Cancel:
-                    this.Close();
+                    Close();
                     break;
             }
         }

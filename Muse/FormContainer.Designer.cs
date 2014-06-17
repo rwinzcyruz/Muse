@@ -35,6 +35,11 @@
             this.menuCustomerList = new System.Windows.Forms.ToolStripMenuItem();
             this.menuUserList = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLogout = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuWindows = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuWindowsCascade = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuWindowsTileVertical = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuWindowsTileHorizontal = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuWindowsCloseAll = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,8 +51,10 @@
             this.menuProductList,
             this.menuCustomerList,
             this.menuUserList,
-            this.menuLogout});
+            this.menuLogout,
+            this.menuWindows});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.MdiWindowListItem = this.menuWindows;
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(784, 24);
             this.menuStrip.TabIndex = 1;
@@ -101,6 +108,45 @@
             this.menuLogout.Text = "Keluar";
             this.menuLogout.Click += new System.EventHandler(this.menuLogout_Click);
             // 
+            // menuWindows
+            // 
+            this.menuWindows.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuWindowsCascade,
+            this.menuWindowsTileVertical,
+            this.menuWindowsTileHorizontal,
+            this.menuWindowsCloseAll});
+            this.menuWindows.Name = "menuWindows";
+            this.menuWindows.Size = new System.Drawing.Size(68, 20);
+            this.menuWindows.Text = "Windows";
+            // 
+            // menuWindowsCascade
+            // 
+            this.menuWindowsCascade.Name = "menuWindowsCascade";
+            this.menuWindowsCascade.Size = new System.Drawing.Size(151, 22);
+            this.menuWindowsCascade.Text = "Cascade";
+            this.menuWindowsCascade.Click += new System.EventHandler(this.menuWindowsCascade_Click);
+            // 
+            // menuWindowsTileVertical
+            // 
+            this.menuWindowsTileVertical.Name = "menuWindowsTileVertical";
+            this.menuWindowsTileVertical.Size = new System.Drawing.Size(151, 22);
+            this.menuWindowsTileVertical.Text = "Tile Vertical";
+            this.menuWindowsTileVertical.Click += new System.EventHandler(this.menuWindowsTileVertical_Click);
+            // 
+            // menuWindowsTileHorizontal
+            // 
+            this.menuWindowsTileHorizontal.Name = "menuWindowsTileHorizontal";
+            this.menuWindowsTileHorizontal.Size = new System.Drawing.Size(151, 22);
+            this.menuWindowsTileHorizontal.Text = "Tile Horizontal";
+            this.menuWindowsTileHorizontal.Click += new System.EventHandler(this.menuWindowsTileHorizontal_Click);
+            // 
+            // menuWindowsCloseAll
+            // 
+            this.menuWindowsCloseAll.Name = "menuWindowsCloseAll";
+            this.menuWindowsCloseAll.Size = new System.Drawing.Size(151, 22);
+            this.menuWindowsCloseAll.Text = "Close All";
+            this.menuWindowsCloseAll.Click += new System.EventHandler(this.menuWindowsCloseAll_Click);
+            // 
             // FormContainer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -130,6 +176,11 @@
         private System.Windows.Forms.ToolStripMenuItem menuBillList;
         private System.Windows.Forms.ToolStripMenuItem menuOrder;
         private System.Windows.Forms.ToolStripMenuItem menuLogout;
+        private System.Windows.Forms.ToolStripMenuItem menuWindows;
+        private System.Windows.Forms.ToolStripMenuItem menuWindowsCascade;
+        private System.Windows.Forms.ToolStripMenuItem menuWindowsTileVertical;
+        private System.Windows.Forms.ToolStripMenuItem menuWindowsTileHorizontal;
+        private System.Windows.Forms.ToolStripMenuItem menuWindowsCloseAll;
 
 
 
