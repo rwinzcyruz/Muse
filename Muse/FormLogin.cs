@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Muse.Model;
 
 namespace Muse
 {
@@ -29,16 +28,21 @@ namespace Muse
                 return;
             }
 
-            if (User.Login(username, password))
+            if (username == "admin" && password == "admin")
             {
-                var form = new FormContainer();
-                form.Show();
-                this.Hide();
+                this.DialogResult = DialogResult.OK;
             }
             else
             {
                 MessageBox.Show("username/password yang anda masukkan salah");
             }
+        }
+
+        public void ClearForm () {
+            txtUsername.Clear();
+            txtPassword.Clear();
+            txtConfirm.Clear();
+            txtUsername.Select();
         }
     }
 }

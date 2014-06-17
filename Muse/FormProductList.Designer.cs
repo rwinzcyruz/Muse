@@ -98,7 +98,6 @@
             this.MinimizeBox = false;
             this.Name = "FormProductList";
             this.Text = "Daftar Produk";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormProductList_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

@@ -6,38 +6,69 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Reflection;
 
 namespace Muse
 {
     public partial class FormContainer : Form
     {
-        Dictionary<string, Form> _forms;
+        private FormLogin _formLogin = new FormLogin();
 
         public FormContainer()
         {
             InitializeComponent();
+        }
 
-            _forms = new Dictionary<string, Form> {
-                {"bill", new FormBillList()},
-                {"order", new FormOrderList()},
-                {"product", new FormProductList()},
-                {"customer", new FormCustomerList()},
-                {"user", new FormUserList()}
-            };
+        private void FormContainer_Load(object sender, EventArgs e)
+        {
+            _Login();
+        }
 
-            foreach (var form in _forms)
+        private void menuLogout_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            foreach (var form in this.MdiChildren)
             {
-                form.Value.WindowState = FormWindowState.Maximized;
-                form.Value.MdiParent = this;
+                form.Close();
             }
-
-            _forms["bill"].Show();
+            _formLogin.ClearForm();
+            _Login();
         }
 
         private void menu_Click(object sender, EventArgs e)
         {
             string tag = (sender as ToolStripMenuItem).Tag.ToString();
-            _forms[tag].Show();
+            _ActivateForm(tag);
+        }
+
+        private void _Login()
+        {
+            var result = _formLogin.ShowDialog();
+            switch (result)
+            {
+                case DialogResult.OK:
+                    this.Show();
+                    this.Focus();
+                    _ActivateForm("FormBillList");
+                    break;
+                case DialogResult.Cancel:
+                    this.Close();
+                    break;
+            }
+        }
+
+        private void _ActivateForm(string className)
+        {
+            var form = Application.OpenForms[className];
+            if (form == null)
+            {
+                var asm = Assembly.GetExecutingAssembly();
+                form = asm.CreateInstance(typeof(Program).Namespace + "." + className) as Form;
+                form.MdiParent = this;
+            }
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+            form.Focus();
         }
     }
 }

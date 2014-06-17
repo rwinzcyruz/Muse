@@ -98,7 +98,6 @@
             this.MinimizeBox = false;
             this.Name = "FormUserList";
             this.Text = "Daftar Pengguna";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormUserList_FormClosing);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

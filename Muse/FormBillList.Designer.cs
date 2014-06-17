@@ -109,7 +109,6 @@
             this.MinimizeBox = false;
             this.Name = "FormBillList";
             this.Text = "Daftar Nota";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormBillList_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

@@ -15,11 +15,5 @@ namespace Muse
         {
             InitializeComponent();
         }
-
-        private void FormBillList_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            this.Hide();
-            e.Cancel = true;
-        }
     }
 }

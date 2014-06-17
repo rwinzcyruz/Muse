@@ -99,7 +99,6 @@
             this.Name = "FormOrderList";
             this.Tag = "";
             this.Text = "Daftar Pesanan";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormOrderList_FormClosing);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

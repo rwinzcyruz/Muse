@@ -30,10 +30,11 @@
         {
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuBillList = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuOrder = new System.Windows.Forms.ToolStripMenuItem();
             this.menuProductList = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCustomerList = new System.Windows.Forms.ToolStripMenuItem();
             this.menuUserList = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuOrder = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuLogout = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,7 +45,8 @@
             this.menuOrder,
             this.menuProductList,
             this.menuCustomerList,
-            this.menuUserList});
+            this.menuUserList,
+            this.menuLogout});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(784, 24);
@@ -55,15 +57,23 @@
             // 
             this.menuBillList.Name = "menuBillList";
             this.menuBillList.Size = new System.Drawing.Size(109, 20);
-            this.menuBillList.Tag = "bill";
+            this.menuBillList.Tag = "FormBillList";
             this.menuBillList.Text = "Lihat Daftar Nota";
             this.menuBillList.Click += new System.EventHandler(this.menu_Click);
+            // 
+            // menuOrder
+            // 
+            this.menuOrder.Name = "menuOrder";
+            this.menuOrder.Size = new System.Drawing.Size(127, 20);
+            this.menuOrder.Tag = "FormOrderList";
+            this.menuOrder.Text = "Lihat Daftar Pesanan";
+            this.menuOrder.Click += new System.EventHandler(this.menu_Click);
             // 
             // menuProductList
             // 
             this.menuProductList.Name = "menuProductList";
             this.menuProductList.Size = new System.Drawing.Size(121, 20);
-            this.menuProductList.Tag = "product";
+            this.menuProductList.Tag = "FormProductList";
             this.menuProductList.Text = "Lihat Daftar Produk";
             this.menuProductList.Click += new System.EventHandler(this.menu_Click);
             // 
@@ -71,7 +81,7 @@
             // 
             this.menuCustomerList.Name = "menuCustomerList";
             this.menuCustomerList.Size = new System.Drawing.Size(139, 20);
-            this.menuCustomerList.Tag = "customer";
+            this.menuCustomerList.Tag = "FormCustomerList";
             this.menuCustomerList.Text = "Lihat Daftar Pelanggan";
             this.menuCustomerList.Click += new System.EventHandler(this.menu_Click);
             // 
@@ -79,17 +89,17 @@
             // 
             this.menuUserList.Name = "menuUserList";
             this.menuUserList.Size = new System.Drawing.Size(137, 20);
-            this.menuUserList.Tag = "user";
+            this.menuUserList.Tag = "FormUserList";
             this.menuUserList.Text = "Lihat Daftar Pengguna";
             this.menuUserList.Click += new System.EventHandler(this.menu_Click);
             // 
-            // menuOrder
+            // menuLogout
             // 
-            this.menuOrder.Name = "menuOrder";
-            this.menuOrder.Size = new System.Drawing.Size(127, 20);
-            this.menuOrder.Tag = "order";
-            this.menuOrder.Text = "Lihat Daftar Pesanan";
-            this.menuOrder.Click += new System.EventHandler(this.menu_Click);
+            this.menuLogout.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.menuLogout.Name = "menuLogout";
+            this.menuLogout.Size = new System.Drawing.Size(52, 20);
+            this.menuLogout.Text = "Keluar";
+            this.menuLogout.Click += new System.EventHandler(this.menuLogout_Click);
             // 
             // FormContainer
             // 
@@ -101,7 +111,9 @@
             this.MainMenuStrip = this.menuStrip;
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "FormContainer";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Aplikasi Managemen Restoran";
+            this.Load += new System.EventHandler(this.FormContainer_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -117,6 +129,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuUserList;
         private System.Windows.Forms.ToolStripMenuItem menuBillList;
         private System.Windows.Forms.ToolStripMenuItem menuOrder;
+        private System.Windows.Forms.ToolStripMenuItem menuLogout;
 
 
 
