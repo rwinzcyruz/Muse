@@ -125,7 +125,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="RestoModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
-        <EntityContainer Name="RestoModelContainer" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="RestoContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Users" EntityType="RestoModel.User" />
           <EntitySet Name="Customers" EntityType="RestoModel.Customer" />
           <EntitySet Name="Bills" EntityType="RestoModel.Bill" />
@@ -252,7 +252,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
     <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="RestoModelStoreContainer" CdmEntityContainer="RestoModelContainer">
+  <EntityContainerMapping StorageEntityContainer="RestoModelStoreContainer" CdmEntityContainer="RestoContext">
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="IsTypeOf(RestoModel.User)">
         <MappingFragment StoreEntitySet="Users">

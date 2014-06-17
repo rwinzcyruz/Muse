@@ -13,10 +13,10 @@ namespace Muse
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class RestoModelContainer : DbContext
+    public partial class RestoContext : DbContext
     {
-        public RestoModelContainer()
-            : base("name=RestoModelContainer")
+        public RestoContext()
+            : base("name=RestoContext")
         {
         }
     
