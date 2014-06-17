@@ -75,6 +75,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bill.cs">
+      <DependentUpon>RestoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Customer.cs">
+      <DependentUpon>RestoModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DbManager.cs" />
     <Compile Include="FormAddOrder.cs">
       <SubType>Form</SubType>
@@ -142,8 +148,32 @@
     <Compile Include="FormUserList.Designer.cs">
       <DependentUpon>FormUserList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Order.cs">
+      <DependentUpon>RestoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product.cs">
+      <DependentUpon>RestoModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RestoModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RestoModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RestoModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RestoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RestoModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RestoModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>RestoModel.tt</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FormAddOrder.resx">
       <DependentUpon>FormAddOrder.cs</DependentUpon>
     </EmbeddedResource>
@@ -197,6 +227,23 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EntityDeploy Include="RestoModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>RestoModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="RestoModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>RestoModel.Context.cs</LastGenOutput>
+      <DependentUpon>RestoModel.edmx</DependentUpon>
+    </None>
+    <None Include="RestoModel.edmx.diagram">
+      <DependentUpon>RestoModel.edmx</DependentUpon>
+    </None>
+    <None Include="RestoModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>RestoModel.cs</LastGenOutput>
+      <DependentUpon>RestoModel.edmx</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -227,9 +274,20 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="RestoDb.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="RestoDb_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>RestoDb.mdf</DependentUpon>
+    </Content>
+    <Content Include="RestoModel.edmx.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
