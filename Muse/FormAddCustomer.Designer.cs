@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.lblName = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.lblAddress = new System.Windows.Forms.Label();
@@ -36,23 +36,26 @@
             this.lblPhone = new System.Windows.Forms.Label();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.lblGender = new System.Windows.Forms.Label();
-            this.cboGender = new System.Windows.Forms.ComboBox();
             this.lblEmail = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pnlGender = new System.Windows.Forms.Panel();
+            this.rdoFemale = new System.Windows.Forms.RadioButton();
+            this.rdoMale = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
+            this.pnlGender.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnAdd
+            // btnSave
             // 
-            this.btnAdd.BackColor = System.Drawing.Color.Transparent;
-            this.btnAdd.Location = new System.Drawing.Point(174, 181);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 11;
-            this.btnAdd.Text = "Simpan";
-            this.btnAdd.UseVisualStyleBackColor = false;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.btnSave.BackColor = System.Drawing.Color.Transparent;
+            this.btnSave.Location = new System.Drawing.Point(174, 181);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 11;
+            this.btnSave.Text = "Simpan";
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // lblName
             // 
@@ -112,17 +115,6 @@
             this.lblGender.TabIndex = 3;
             this.lblGender.Text = "Jenis Kelamin";
             // 
-            // cboGender
-            // 
-            this.cboGender.Items.AddRange(new object[] {
-            "Pria ",
-            "Wanita"});
-            this.cboGender.Location = new System.Drawing.Point(97, 57);
-            this.cboGender.Name = "cboGender";
-            this.cboGender.Size = new System.Drawing.Size(152, 21);
-            this.cboGender.TabIndex = 4;
-            this.cboGender.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cboGender_KeyPress);
-            // 
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
@@ -141,13 +133,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.pnlGender);
             this.groupBox1.Controls.Add(this.lblName);
-            this.groupBox1.Controls.Add(this.btnAdd);
+            this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.txtEmail);
             this.groupBox1.Controls.Add(this.txtName);
             this.groupBox1.Controls.Add(this.lblEmail);
             this.groupBox1.Controls.Add(this.lblGender);
-            this.groupBox1.Controls.Add(this.cboGender);
             this.groupBox1.Controls.Add(this.lblAddress);
             this.groupBox1.Controls.Add(this.txtAddress);
             this.groupBox1.Controls.Add(this.txtPhone);
@@ -159,6 +151,37 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tambah Pelanggan";
             // 
+            // pnlGender
+            // 
+            this.pnlGender.Controls.Add(this.rdoFemale);
+            this.pnlGender.Controls.Add(this.rdoMale);
+            this.pnlGender.Location = new System.Drawing.Point(96, 60);
+            this.pnlGender.Name = "pnlGender";
+            this.pnlGender.Size = new System.Drawing.Size(153, 20);
+            this.pnlGender.TabIndex = 12;
+            // 
+            // rdoFemale
+            // 
+            this.rdoFemale.AutoSize = true;
+            this.rdoFemale.Location = new System.Drawing.Point(78, 3);
+            this.rdoFemale.Name = "rdoFemale";
+            this.rdoFemale.Size = new System.Drawing.Size(59, 17);
+            this.rdoFemale.TabIndex = 1;
+            this.rdoFemale.TabStop = true;
+            this.rdoFemale.Text = "Wanita";
+            this.rdoFemale.UseVisualStyleBackColor = true;
+            // 
+            // rdoMale
+            // 
+            this.rdoMale.AutoSize = true;
+            this.rdoMale.Location = new System.Drawing.Point(3, 3);
+            this.rdoMale.Name = "rdoMale";
+            this.rdoMale.Size = new System.Drawing.Size(43, 17);
+            this.rdoMale.TabIndex = 0;
+            this.rdoMale.TabStop = true;
+            this.rdoMale.Text = "Pria";
+            this.rdoMale.UseVisualStyleBackColor = true;
+            // 
             // FormAddCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -169,13 +192,15 @@
             this.Text = "Form Tambah Pelanggan";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.pnlGender.ResumeLayout(false);
+            this.pnlGender.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label lblAddress;
@@ -183,10 +208,12 @@
         private System.Windows.Forms.Label lblPhone;
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.Label lblGender;
-        private System.Windows.Forms.ComboBox cboGender;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Panel pnlGender;
+        private System.Windows.Forms.RadioButton rdoFemale;
+        private System.Windows.Forms.RadioButton rdoMale;
     }
 }
 

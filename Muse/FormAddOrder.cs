@@ -15,5 +15,33 @@ namespace Muse
         {
             InitializeComponent();
         }
+
+        private void btnBrowseCustomer_Click(object sender, EventArgs e)
+        {
+            var form = new FormCustomerList();
+            var result = form.ShowDialog();
+
+            switch (result)
+            {
+                case DialogResult.OK:
+                    break;
+                case DialogResult.Cancel:
+                    break;
+            }
+        }
+
+        private void btnBrowseProduct_Click(object sender, EventArgs e)
+        {
+            var form = new FormProductList();
+            var result = form.ShowDialog();
+
+            switch (result)
+            {
+                case DialogResult.OK:
+                    break;
+                case DialogResult.Cancel:
+                    break;
+            }
+        }
     }
 }

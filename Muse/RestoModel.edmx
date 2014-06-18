@@ -19,9 +19,9 @@
       <End Role="Bill" EntitySet="Bills" />
       <End Role="Order" EntitySet="Orders" />
     </AssociationSet>
-    <AssociationSet Name="OrderProduct" Association="RestoModel.Store.OrderProduct">
-      <End Role="Order" EntitySet="Orders" />
+    <AssociationSet Name="ProductOrder" Association="RestoModel.Store.ProductOrder">
       <End Role="Product" EntitySet="Products" />
+      <End Role="Order" EntitySet="Orders" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Users">
@@ -72,6 +72,7 @@
     <Property Name="BillId" Type="int" Nullable="false" />
     <Property Name="CreatedAt" Type="datetime" Nullable="false" />
     <Property Name="UpdatedAt" Type="datetime" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Products">
     <Key>
@@ -81,7 +82,6 @@
     <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="256" />
     <Property Name="Price" Type="int" Nullable="false" />
     <Property Name="Description" Type="nvarchar" Nullable="true" MaxLength="256" />
-    <Property Name="OrderId" Type="int" Nullable="false" />
     <Property Name="CreatedAt" Type="datetime" Nullable="false" />
     <Property Name="UpdatedAt" Type="datetime" Nullable="false" />
   </EntityType>
@@ -109,15 +109,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="OrderProduct">
-    <End Role="Order" Type="RestoModel.Store.Orders" Multiplicity="1" />
-    <End Role="Product" Type="RestoModel.Store.Products" Multiplicity="*" />
+  <Association Name="ProductOrder">
+    <End Role="Product" Type="RestoModel.Store.Products" Multiplicity="1" />
+    <End Role="Order" Type="RestoModel.Store.Orders" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Order">
+      <Principal Role="Product">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Product">
-        <PropertyRef Name="OrderId" />
+      <Dependent Role="Order">
+        <PropertyRef Name="ProductId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -139,9 +139,9 @@
             <End Role="Bill" EntitySet="Bills" />
             <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="OrderProduct" Association="RestoModel.OrderProduct">
-            <End Role="Order" EntitySet="Orders" />
+          <AssociationSet Name="ProductOrder" Association="RestoModel.ProductOrder">
             <End Role="Product" EntitySet="Products" />
+            <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="User">
@@ -194,9 +194,10 @@
           <Property Name="Quantity" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Bill" Relationship="RestoModel.BillOrder" FromRole="Order" ToRole="Bill" />
           <Property Name="BillId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Products" Relationship="RestoModel.OrderProduct" FromRole="Order" ToRole="Product" />
           <Property Name="CreatedAt" Type="DateTime" Nullable="false" />
           <Property Name="UpdatedAt" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="RestoModel.ProductOrder" FromRole="Order" ToRole="Product" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -206,10 +207,9 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="256" />
           <Property Name="Price" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" Nullable="true" MaxLength="256" />
-          <NavigationProperty Name="Order" Relationship="RestoModel.OrderProduct" FromRole="Product" ToRole="Order" />
-          <Property Name="OrderId" Type="Int32" Nullable="false" />
           <Property Name="CreatedAt" Type="DateTime" Nullable="false" />
           <Property Name="UpdatedAt" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="RestoModel.ProductOrder" FromRole="Product" ToRole="Order" />
         </EntityType>
         <Association Name="CustomerBill">
           <End Type="RestoModel.Customer" Role="Customer" Multiplicity="1" />
@@ -235,15 +235,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="OrderProduct">
-          <End Type="RestoModel.Order" Role="Order" Multiplicity="1" />
-          <End Type="RestoModel.Product" Role="Product" Multiplicity="*" />
+        <Association Name="ProductOrder">
+          <End Type="RestoModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="RestoModel.Order" Role="Order" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Order">
+            <Principal Role="Product">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="OrderId" />
+            <Dependent Role="Order">
+              <PropertyRef Name="ProductId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -303,6 +303,7 @@
           <ScalarProperty Name="BillId" ColumnName="BillId" />
           <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
           <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -313,7 +314,6 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
           <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
           <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
         </MappingFragment>

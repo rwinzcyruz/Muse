@@ -15,5 +15,19 @@ namespace Muse
         {
             InitializeComponent();
         }
+
+        private void btnCreateBill_Click(object sender, EventArgs e)
+        {
+            var form = new FormAddOrder();
+            var result = form.ShowDialog();
+
+            switch (result)
+            {
+                case DialogResult.OK:
+                    break;
+                case DialogResult.Cancel:
+                    break;
+            }
+        }
     }
 }

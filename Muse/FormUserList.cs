@@ -15,5 +15,31 @@ namespace Muse
         {
             InitializeComponent();
         }
+
+        private void FormUserList_Load(object sender, EventArgs e)
+        {
+            using (var context = new RestoContext())
+            {
+                userBindingSource.DataSource = context.Users.ToList();
+            }
+        }
+
+        private void btnAddUser_Click(object sender, EventArgs e)
+        {
+            var form = new FormAddUser();
+            var result = form.ShowDialog();
+
+            switch (result)
+            {
+                case DialogResult.OK:
+                    using (var context = new RestoContext())
+                    {
+                        userBindingSource.DataSource = context.Users.ToList();
+                    }
+                    break;
+                case DialogResult.Cancel:
+                    break;
+            }
+        }
     }
 }

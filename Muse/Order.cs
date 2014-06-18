@@ -14,18 +14,14 @@ namespace Muse
     
     public partial class Order
     {
-        public Order()
-        {
-            this.Products = new HashSet<Product>();
-        }
-    
         public int Id { get; set; }
         public int Quantity { get; set; }
         public int BillId { get; set; }
         public System.DateTime CreatedAt { get; set; }
         public System.DateTime UpdatedAt { get; set; }
+        public int ProductId { get; set; }
     
         public virtual Bill Bill { get; set; }
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/18/2014 01:58:35
+-- Date Created: 06/18/2014 15:16:29
 -- Generated from EDMX file: D:\Github\Muse\Muse\RestoModel.edmx
 -- --------------------------------------------------
 
@@ -23,8 +23,8 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_BillOrder]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Orders] DROP CONSTRAINT [FK_BillOrder];
 GO
-IF OBJECT_ID(N'[dbo].[FK_OrderProduct]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Products] DROP CONSTRAINT [FK_OrderProduct];
+IF OBJECT_ID(N'[dbo].[FK_ProductOrder]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Orders] DROP CONSTRAINT [FK_ProductOrder];
 GO
 
 -- --------------------------------------------------
@@ -96,7 +96,8 @@ CREATE TABLE [dbo].[Orders] (
     [Quantity] int  NOT NULL,
     [BillId] int  NOT NULL,
     [CreatedAt] datetime  NOT NULL,
-    [UpdatedAt] datetime  NOT NULL
+    [UpdatedAt] datetime  NOT NULL,
+    [ProductId] int  NOT NULL
 );
 GO
 
@@ -106,7 +107,6 @@ CREATE TABLE [dbo].[Products] (
     [Name] nvarchar(256)  NOT NULL,
     [Price] int  NOT NULL,
     [Description] nvarchar(256)  NULL,
-    [OrderId] int  NOT NULL,
     [CreatedAt] datetime  NOT NULL,
     [UpdatedAt] datetime  NOT NULL
 );
@@ -178,18 +178,18 @@ ON [dbo].[Orders]
     ([BillId]);
 GO
 
--- Creating foreign key on [OrderId] in table 'Products'
-ALTER TABLE [dbo].[Products]
-ADD CONSTRAINT [FK_OrderProduct]
-    FOREIGN KEY ([OrderId])
-    REFERENCES [dbo].[Orders]
+-- Creating foreign key on [ProductId] in table 'Orders'
+ALTER TABLE [dbo].[Orders]
+ADD CONSTRAINT [FK_ProductOrder]
+    FOREIGN KEY ([ProductId])
+    REFERENCES [dbo].[Products]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
--- Creating non-clustered index for FOREIGN KEY 'FK_OrderProduct'
-CREATE INDEX [IX_FK_OrderProduct]
-ON [dbo].[Products]
-    ([OrderId]);
+-- Creating non-clustered index for FOREIGN KEY 'FK_ProductOrder'
+CREATE INDEX [IX_FK_ProductOrder]
+ON [dbo].[Orders]
+    ([ProductId]);
 GO
 
 -- --------------------------------------------------

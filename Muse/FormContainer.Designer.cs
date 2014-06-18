@@ -30,7 +30,6 @@
         {
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuBillList = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuOrder = new System.Windows.Forms.ToolStripMenuItem();
             this.menuProductList = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCustomerList = new System.Windows.Forms.ToolStripMenuItem();
             this.menuUserList = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,7 +46,6 @@
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuBillList,
-            this.menuOrder,
             this.menuProductList,
             this.menuCustomerList,
             this.menuUserList,
@@ -56,7 +54,7 @@
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.MdiWindowListItem = this.menuWindows;
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(784, 24);
+            this.menuStrip.Size = new System.Drawing.Size(1008, 24);
             this.menuStrip.TabIndex = 1;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -67,14 +65,6 @@
             this.menuBillList.Tag = "FormBillList";
             this.menuBillList.Text = "Lihat Daftar Nota";
             this.menuBillList.Click += new System.EventHandler(this.menu_Click);
-            // 
-            // menuOrder
-            // 
-            this.menuOrder.Name = "menuOrder";
-            this.menuOrder.Size = new System.Drawing.Size(127, 20);
-            this.menuOrder.Tag = "FormOrderList";
-            this.menuOrder.Text = "Lihat Daftar Pesanan";
-            this.menuOrder.Click += new System.EventHandler(this.menu_Click);
             // 
             // menuProductList
             // 
@@ -151,11 +141,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(1008, 537);
             this.Controls.Add(this.menuStrip);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
-            this.MinimumSize = new System.Drawing.Size(800, 600);
+            this.MinimumSize = new System.Drawing.Size(1024, 576);
             this.Name = "FormContainer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Aplikasi Managemen Restoran";
@@ -174,7 +164,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuCustomerList;
         private System.Windows.Forms.ToolStripMenuItem menuUserList;
         private System.Windows.Forms.ToolStripMenuItem menuBillList;
-        private System.Windows.Forms.ToolStripMenuItem menuOrder;
         private System.Windows.Forms.ToolStripMenuItem menuLogout;
         private System.Windows.Forms.ToolStripMenuItem menuWindows;
         private System.Windows.Forms.ToolStripMenuItem menuWindowsCascade;

@@ -35,16 +35,19 @@
             this.lblPassword = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.lblGender = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.lblAddress = new System.Windows.Forms.Label();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.lblPhone = new System.Windows.Forms.Label();
-            this.txtPhone = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btnAdd = new System.Windows.Forms.Button();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.btnSave = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pnlGender = new System.Windows.Forms.Panel();
+            this.rdoFemale = new System.Windows.Forms.RadioButton();
+            this.rdoMale = new System.Windows.Forms.RadioButton();
+            this.txtPhone = new System.Windows.Forms.MaskedTextBox();
             this.groupBox1.SuspendLayout();
+            this.pnlGender.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblNama
@@ -105,16 +108,6 @@
             this.lblGender.TabIndex = 7;
             this.lblGender.Text = "Jenis Kelamin";
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(103, 119);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(159, 21);
-            this.comboBox1.TabIndex = 8;
-            this.comboBox1.Text = "Pria";
-            this.comboBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox1_KeyPress);
-            // 
             // lblAddress
             // 
             this.lblAddress.AutoSize = true;
@@ -140,13 +133,6 @@
             this.lblPhone.TabIndex = 11;
             this.lblPhone.Text = "Phone";
             // 
-            // txtPhone
-            // 
-            this.txtPhone.Location = new System.Drawing.Point(104, 183);
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(158, 20);
-            this.txtPhone.TabIndex = 12;
-            // 
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
@@ -156,46 +142,85 @@
             this.lblEmail.TabIndex = 13;
             this.lblEmail.Text = "E-mail";
             // 
-            // textBox1
+            // txtEmail
             // 
-            this.textBox1.Location = new System.Drawing.Point(104, 214);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(158, 20);
-            this.textBox1.TabIndex = 14;
+            this.txtEmail.Location = new System.Drawing.Point(104, 214);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(158, 20);
+            this.txtEmail.TabIndex = 14;
             // 
-            // btnAdd
+            // btnSave
             // 
-            this.btnAdd.Location = new System.Drawing.Point(188, 241);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 15;
-            this.btnAdd.Text = "Simpan";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.btnSave.Location = new System.Drawing.Point(188, 241);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 15;
+            this.btnSave.Text = "Simpan";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtPhone);
+            this.groupBox1.Controls.Add(this.pnlGender);
             this.groupBox1.Controls.Add(this.lblNama);
-            this.groupBox1.Controls.Add(this.btnAdd);
+            this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.txtName);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtEmail);
             this.groupBox1.Controls.Add(this.lblUsername);
             this.groupBox1.Controls.Add(this.lblEmail);
             this.groupBox1.Controls.Add(this.txtUsername);
-            this.groupBox1.Controls.Add(this.txtPhone);
             this.groupBox1.Controls.Add(this.lblPassword);
             this.groupBox1.Controls.Add(this.lblPhone);
             this.groupBox1.Controls.Add(this.txtPassword);
             this.groupBox1.Controls.Add(this.txtAddress);
             this.groupBox1.Controls.Add(this.lblGender);
             this.groupBox1.Controls.Add(this.lblAddress);
-            this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(269, 278);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tambah Pengguna";
+            // 
+            // pnlGender
+            // 
+            this.pnlGender.Controls.Add(this.rdoFemale);
+            this.pnlGender.Controls.Add(this.rdoMale);
+            this.pnlGender.Location = new System.Drawing.Point(104, 119);
+            this.pnlGender.Name = "pnlGender";
+            this.pnlGender.Size = new System.Drawing.Size(153, 20);
+            this.pnlGender.TabIndex = 16;
+            // 
+            // rdoFemale
+            // 
+            this.rdoFemale.AutoSize = true;
+            this.rdoFemale.Location = new System.Drawing.Point(78, 3);
+            this.rdoFemale.Name = "rdoFemale";
+            this.rdoFemale.Size = new System.Drawing.Size(59, 17);
+            this.rdoFemale.TabIndex = 1;
+            this.rdoFemale.TabStop = true;
+            this.rdoFemale.Text = "Wanita";
+            this.rdoFemale.UseVisualStyleBackColor = true;
+            // 
+            // rdoMale
+            // 
+            this.rdoMale.AutoSize = true;
+            this.rdoMale.Location = new System.Drawing.Point(3, 3);
+            this.rdoMale.Name = "rdoMale";
+            this.rdoMale.Size = new System.Drawing.Size(43, 17);
+            this.rdoMale.TabIndex = 0;
+            this.rdoMale.TabStop = true;
+            this.rdoMale.Text = "Pria";
+            this.rdoMale.UseVisualStyleBackColor = true;
+            // 
+            // txtPhone
+            // 
+            this.txtPhone.Location = new System.Drawing.Point(104, 183);
+            this.txtPhone.Mask = "0000 0000 0000";
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(158, 20);
+            this.txtPhone.TabIndex = 17;
             // 
             // FormAddUser
             // 
@@ -207,6 +232,8 @@
             this.Text = "Form Tambah Pengguna";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.pnlGender.ResumeLayout(false);
+            this.pnlGender.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -220,14 +247,16 @@
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label lblGender;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label lblAddress;
         private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.Label lblPhone;
-        private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.Label lblEmail;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Panel pnlGender;
+        private System.Windows.Forms.RadioButton rdoFemale;
+        private System.Windows.Forms.RadioButton rdoMale;
+        private System.Windows.Forms.MaskedTextBox txtPhone;
     }
 }
