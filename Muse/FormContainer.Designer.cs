@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.menuStrip = new System.Windows.Forms.MenuStrip();
-            this.menuBillList = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuProductList = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuCustomerList = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuUserList = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuBill = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuProduct = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuCustomer = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuUser = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLogout = new System.Windows.Forms.ToolStripMenuItem();
             this.menuWindows = new System.Windows.Forms.ToolStripMenuItem();
             this.menuWindowsCascade = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,10 +45,10 @@
             // menuStrip
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuBillList,
-            this.menuProductList,
-            this.menuCustomerList,
-            this.menuUserList,
+            this.menuBill,
+            this.menuProduct,
+            this.menuCustomer,
+            this.menuUser,
             this.menuLogout,
             this.menuWindows});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
@@ -58,37 +58,37 @@
             this.menuStrip.TabIndex = 1;
             this.menuStrip.Text = "menuStrip1";
             // 
-            // menuBillList
+            // menuBill
             // 
-            this.menuBillList.Name = "menuBillList";
-            this.menuBillList.Size = new System.Drawing.Size(109, 20);
-            this.menuBillList.Tag = "FormBillList";
-            this.menuBillList.Text = "Lihat Daftar Nota";
-            this.menuBillList.Click += new System.EventHandler(this.menu_Click);
+            this.menuBill.Name = "menuBill";
+            this.menuBill.Size = new System.Drawing.Size(109, 20);
+            this.menuBill.Tag = "";
+            this.menuBill.Text = "Lihat Daftar Nota";
+            this.menuBill.Click += new System.EventHandler(this.menuBillList_Click);
             // 
-            // menuProductList
+            // menuProduct
             // 
-            this.menuProductList.Name = "menuProductList";
-            this.menuProductList.Size = new System.Drawing.Size(121, 20);
-            this.menuProductList.Tag = "FormProductList";
-            this.menuProductList.Text = "Lihat Daftar Produk";
-            this.menuProductList.Click += new System.EventHandler(this.menu_Click);
+            this.menuProduct.Name = "menuProduct";
+            this.menuProduct.Size = new System.Drawing.Size(121, 20);
+            this.menuProduct.Tag = "";
+            this.menuProduct.Text = "Lihat Daftar Produk";
+            this.menuProduct.Click += new System.EventHandler(this.menuProduct_Click);
             // 
-            // menuCustomerList
+            // menuCustomer
             // 
-            this.menuCustomerList.Name = "menuCustomerList";
-            this.menuCustomerList.Size = new System.Drawing.Size(139, 20);
-            this.menuCustomerList.Tag = "FormCustomerList";
-            this.menuCustomerList.Text = "Lihat Daftar Pelanggan";
-            this.menuCustomerList.Click += new System.EventHandler(this.menu_Click);
+            this.menuCustomer.Name = "menuCustomer";
+            this.menuCustomer.Size = new System.Drawing.Size(139, 20);
+            this.menuCustomer.Tag = "";
+            this.menuCustomer.Text = "Lihat Daftar Pelanggan";
+            this.menuCustomer.Click += new System.EventHandler(this.menuCustomer_Click);
             // 
-            // menuUserList
+            // menuUser
             // 
-            this.menuUserList.Name = "menuUserList";
-            this.menuUserList.Size = new System.Drawing.Size(137, 20);
-            this.menuUserList.Tag = "FormUserList";
-            this.menuUserList.Text = "Lihat Daftar Pengguna";
-            this.menuUserList.Click += new System.EventHandler(this.menu_Click);
+            this.menuUser.Name = "menuUser";
+            this.menuUser.Size = new System.Drawing.Size(137, 20);
+            this.menuUser.Tag = "";
+            this.menuUser.Text = "Lihat Daftar Pengguna";
+            this.menuUser.Click += new System.EventHandler(this.menuUser_Click);
             // 
             // menuLogout
             // 
@@ -160,10 +160,10 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip;
-        private System.Windows.Forms.ToolStripMenuItem menuProductList;
-        private System.Windows.Forms.ToolStripMenuItem menuCustomerList;
-        private System.Windows.Forms.ToolStripMenuItem menuUserList;
-        private System.Windows.Forms.ToolStripMenuItem menuBillList;
+        private System.Windows.Forms.ToolStripMenuItem menuProduct;
+        private System.Windows.Forms.ToolStripMenuItem menuCustomer;
+        private System.Windows.Forms.ToolStripMenuItem menuUser;
+        private System.Windows.Forms.ToolStripMenuItem menuBill;
         private System.Windows.Forms.ToolStripMenuItem menuLogout;
         private System.Windows.Forms.ToolStripMenuItem menuWindows;
         private System.Windows.Forms.ToolStripMenuItem menuWindowsCascade;

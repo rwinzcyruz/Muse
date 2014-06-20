@@ -12,12 +12,17 @@ namespace Muse
 {
     public partial class FormContainer : Form
     {
-        private FormLogin _formLogin = new FormLogin();
+        private FormBill _billList;
+        private FormListing _customerList;
+        private FormListing _userList;
+        private FormListing _productList;
 
         public FormContainer()
         {
             InitializeComponent();
         }
+
+        # region event handler
 
         private void FormContainer_Load(object sender, EventArgs e)
         {
@@ -27,18 +32,13 @@ namespace Muse
         private void menuLogout_Click(object sender, EventArgs e)
         {
             Hide();
-            foreach (var form in MdiChildren)
-            {
-                form.Close();
-            }
-            _formLogin.ClearForm();
+            _CloseAll();
             _Login();
         }
 
-        private void menu_Click(object sender, EventArgs e)
+        private void menuBillList_Click(object sender, EventArgs e)
         {
-            string tag = (sender as ToolStripMenuItem).Tag.ToString();
-            _ActivateForm(tag);
+            _Init();
         }
 
         private void menuWindowsCascade_Click(object sender, EventArgs e)
@@ -58,6 +58,43 @@ namespace Muse
 
         private void menuWindowsCloseAll_Click(object sender, EventArgs e)
         {
+            _CloseAll();
+        }
+
+        private void menuProduct_Click(object sender, EventArgs e)
+        {
+            _ActivateListing(ref _productList, Contract.Product);
+        }
+
+        private void menuCustomer_Click(object sender, EventArgs e)
+        {
+            _ActivateListing(ref _customerList, Contract.Customer);
+        }
+
+        private void menuUser_Click(object sender, EventArgs e)
+        {
+            _ActivateListing(ref _userList, Contract.User);
+        }
+
+        # endregion
+
+        # region private method
+
+        private void _Init()
+        {
+            if (_billList == null || _billList.IsDisposed)
+            {
+                _billList = new FormBill();
+                _billList.MdiParent = this;
+            }
+
+            _billList.WindowState = FormWindowState.Maximized;
+            _billList.Show();
+            _billList.Focus();
+        }
+
+        private void _CloseAll()
+        {
             foreach (var form in MdiChildren)
             {
                 form.Close();
@@ -66,13 +103,12 @@ namespace Muse
 
         private void _Login()
         {
-            var result = _formLogin.ShowDialog();
+            var result = new FormLogin().ShowDialog();
             switch (result)
             {
                 case DialogResult.OK:
                     Show();
-                    Focus();
-                    _ActivateForm("FormBillList");
+                    _Init();
                     break;
                 case DialogResult.Cancel:
                     Close();
@@ -80,18 +116,19 @@ namespace Muse
             }
         }
 
-        private void _ActivateForm(string className)
+        private void _ActivateListing(ref FormListing form, Contract contract)
         {
-            var form = Application.OpenForms[className];
-            if (form == null)
+            if (form == null || form.IsDisposed)
             {
-                var asm = Assembly.GetExecutingAssembly();
-                form = asm.CreateInstance(typeof(Program).Namespace + "." + className) as Form;
+                form = new FormListing(contract);
                 form.MdiParent = this;
             }
+
             form.WindowState = FormWindowState.Maximized;
             form.Show();
             form.Focus();
         }
+
+        # endregion
     }
 }

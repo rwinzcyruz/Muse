@@ -81,12 +81,12 @@
     <Compile Include="Customer.cs">
       <DependentUpon>RestoModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DbManager.cs" />
-    <Compile Include="FormAddOrder.cs">
+    <Compile Include="Contract.cs" />
+    <Compile Include="FormAddBill.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAddOrder.Designer.cs">
-      <DependentUpon>FormAddOrder.cs</DependentUpon>
+    <Compile Include="FormAddBill.Designer.cs">
+      <DependentUpon>FormAddBill.cs</DependentUpon>
     </Compile>
     <Compile Include="FormAddProduct.cs">
       <SubType>Form</SubType>
@@ -106,11 +106,11 @@
     <Compile Include="FormAddCustomer.Designer.cs">
       <DependentUpon>FormAddCustomer.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormBillList.cs">
+    <Compile Include="FormBill.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormBillList.Designer.cs">
-      <DependentUpon>FormBillList.cs</DependentUpon>
+    <Compile Include="FormBill.Designer.cs">
+      <DependentUpon>FormBill.cs</DependentUpon>
     </Compile>
     <Compile Include="FormContainer.cs">
       <SubType>Form</SubType>
@@ -118,35 +118,17 @@
     <Compile Include="FormContainer.Designer.cs">
       <DependentUpon>FormContainer.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormCustomerList.cs">
+    <Compile Include="FormListing.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCustomerList.Designer.cs">
-      <DependentUpon>FormCustomerList.cs</DependentUpon>
+    <Compile Include="FormListing.Designer.cs">
+      <DependentUpon>FormListing.cs</DependentUpon>
     </Compile>
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormOrderList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormOrderList.Designer.cs">
-      <DependentUpon>FormOrderList.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormProductList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormProductList.Designer.cs">
-      <DependentUpon>FormProductList.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormUserList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormUserList.Designer.cs">
-      <DependentUpon>FormUserList.cs</DependentUpon>
     </Compile>
     <Compile Include="Order.cs">
       <DependentUpon>RestoModel.tt</DependentUpon>
@@ -174,8 +156,8 @@
     <Compile Include="User.cs">
       <DependentUpon>RestoModel.tt</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FormAddOrder.resx">
-      <DependentUpon>FormAddOrder.cs</DependentUpon>
+    <EmbeddedResource Include="FormAddBill.resx">
+      <DependentUpon>FormAddBill.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAddProduct.resx">
       <DependentUpon>FormAddProduct.cs</DependentUpon>
@@ -186,26 +168,17 @@
     <EmbeddedResource Include="FormAddCustomer.resx">
       <DependentUpon>FormAddCustomer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormBillList.resx">
-      <DependentUpon>FormBillList.cs</DependentUpon>
+    <EmbeddedResource Include="FormBill.resx">
+      <DependentUpon>FormBill.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormContainer.resx">
       <DependentUpon>FormContainer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormCustomerList.resx">
-      <DependentUpon>FormCustomerList.cs</DependentUpon>
+    <EmbeddedResource Include="FormListing.resx">
+      <DependentUpon>FormListing.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormOrderList.resx">
-      <DependentUpon>FormOrderList.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormProductList.resx">
-      <DependentUpon>FormProductList.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormUserList.resx">
-      <DependentUpon>FormUserList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -218,6 +191,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Bill.datasource" />
     <None Include="Properties\DataSources\Customer.datasource" />
     <None Include="Properties\DataSources\Order.datasource" />
     <None Include="Properties\DataSources\Product.datasource" />

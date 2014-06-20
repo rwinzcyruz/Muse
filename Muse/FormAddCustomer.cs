@@ -12,9 +12,23 @@ namespace Muse
 {
     public partial class FormAddCustomer : Form
     {
-        public FormAddCustomer()
+        Action<Customer> _saveModel;
+
+        public FormAddCustomer(Action<Customer> saveModel)
         {
             InitializeComponent();
+            _saveModel = saveModel;
+        }
+
+        private void _clearForm()
+        {
+            txtName.Clear();
+            txtEmail.Clear();
+            txtAddress.Clear();
+            txtPhone.Clear();
+            rdoMale.Checked = false;
+            rdoFemale.Checked = false;
+            txtName.Select();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -35,23 +49,18 @@ namespace Muse
                 gender = false;
             }
 
-            using (var db = new RestoContext())
+            _saveModel(new Customer
             {
-                var customer = new Customer
-                {
-                    Name = name,
-                    Gender = gender,
-                    Address = address,
-                    Email = email,
-                    Phone = phone,
-                    CreatedAt = now,
-                    UpdatedAt = now
-                };
+                Name = name,
+                Gender = gender,
+                Address = address,
+                Email = email,
+                Phone = phone,
+                CreatedAt = now,
+                UpdatedAt = now
+            });
 
-                db.Customers.Add(customer);
-                db.SaveChanges();
-                DialogResult = DialogResult.OK;
-            }
+            _clearForm();
         }
     }
 }

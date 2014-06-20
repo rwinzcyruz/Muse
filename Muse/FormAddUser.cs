@@ -12,9 +12,25 @@ namespace Muse
 {
     public partial class FormAddUser : Form
     {
-        public FormAddUser()
+        private Action<User> _saveModel;
+
+        public FormAddUser(Action<User> saveModel)
         {
             InitializeComponent();
+            _saveModel = saveModel;
+        }
+
+        private void _clearForm()
+        {
+            txtName.Clear();
+            txtUsername.Clear();
+            txtPassword.Clear();
+            txtAddress.Clear();
+            txtEmail.Clear();
+            txtPhone.Clear();
+            rdoMale.Checked = false;
+            rdoFemale.Checked = false;
+            txtName.Select();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -37,25 +53,20 @@ namespace Muse
                 gender = false;
             }
 
-            using (var db = new RestoContext())
+            _saveModel( new User
             {
-                var user = new User
-                {
-                    Name = name,
-                    Username = username,
-                    Password = password,
-                    Gender = gender,
-                    Address = address,
-                    Email = email,
-                    Phone = phone,
-                    CreatedAt = now,
-                    UpdatedAt = now
-                };
+                Name = name,
+                Username = username,
+                Password = password,
+                Gender = gender,
+                Address = address,
+                Email = email,
+                Phone = phone,
+                CreatedAt = now,
+                UpdatedAt = now
+            });
 
-                db.Users.Add(user);
-                db.SaveChanges();
-                DialogResult = DialogResult.OK;
-            }   
+            _clearForm();
         }
     }
 }

@@ -37,12 +37,5 @@ namespace Muse
                 MessageBox.Show("username/password yang anda masukkan salah");
             }
         }
-
-        public void ClearForm () {
-            txtUsername.Clear();
-            txtPassword.Clear();
-            txtConfirm.Clear();
-            txtUsername.Select();
-        }
     }
 }

@@ -11,9 +11,20 @@ namespace Muse
 {
     public partial class FormAddProduct : Form
     {
-        public FormAddProduct()
+        private Action<Product> _saveModel;
+
+        public FormAddProduct(Action<Product> saveModel)
         {
             InitializeComponent();
+            _saveModel = saveModel;
+        }
+
+        private void _clearForm()
+        {
+            txtName.Clear();
+            txtPrice.Clear();
+            txtDesc.Clear();
+            txtName.Select();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -23,21 +34,16 @@ namespace Muse
             var desc = txtName.Text.Trim();
             var now = DateTime.Now;
 
-            using (var db = new RestoContext())
+            _saveModel(new Product
             {
-                var product = new Product
-                {
-                    Name = name,
-                    Price = price,
-                    Description = desc,
-                    CreatedAt = now,
-                    UpdatedAt = now
-                };
+                Name = name,
+                Price = price,
+                Description = desc,
+                CreatedAt = now,
+                UpdatedAt = now
+            });
 
-                db.Products.Add(product);
-                db.SaveChanges();
-                DialogResult = DialogResult.OK;
-            }
+            _clearForm();
         }
     }
 }
