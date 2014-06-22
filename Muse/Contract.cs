@@ -15,4 +15,11 @@ namespace Muse
         Order,
         Product
     }
+
+    public enum Gender : byte
+    {
+        Female,
+        Male,
+        Unknown
+    }
 }

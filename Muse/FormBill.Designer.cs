@@ -178,7 +178,7 @@
             // 
             // bindingSource
             // 
-            this.bindingSource.DataSource = typeof(Muse.Bill);
+            this.bindingSource.DataSource = typeof(Muse.Model.Bill);
             // 
             // panel1
             // 

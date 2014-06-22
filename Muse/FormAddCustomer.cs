@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Muse.Model;
 
 namespace Muse
 {
@@ -37,11 +38,11 @@ namespace Muse
             txtAddress.Text = _customer.Address;
             txtEmail.Text = _customer.Email;
             txtPhone.Text = _customer.Phone;
-            if (_customer.Gender == true)
+            if (_customer.Gender == Gender.Male)
             {
                 rdoMale.Checked = true;
             }
-            else
+            else if (_customer.Gender == Gender.Female)
             {
                 rdoFemale.Checked = true;
             }
@@ -64,16 +65,16 @@ namespace Muse
             var email = txtEmail.Text.Trim();
             var address = txtAddress.Text.Trim();
             var phone = txtPhone.Text.Trim();
-            bool? gender = null;
+            var gender = Gender.Unknown;
             var now = DateTime.Now;
 
             if (rdoMale.Checked) 
             {
-                gender = true;
+                gender = Gender.Male;
             }
             else if (rdoFemale.Checked) 
             {
-                gender = false;
+                gender = Gender.Female;
             }
 
             if (_isNew)

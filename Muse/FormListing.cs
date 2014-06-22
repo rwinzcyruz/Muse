@@ -11,6 +11,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
+using Muse.Model;
 
 namespace Muse
 {
@@ -85,7 +86,7 @@ namespace Muse
             switch (_contract)
             {
                 case Contract.Customer:
-                    new FormAddCustomer(_db.Customers.Find(id) ,customer =>
+                    new FormAddCustomer(_db.Customers.Find(id), customer =>
                     {
                         _db.Customers.Attach(customer);
                         _db.Entry(customer).State = EntityState.Modified;
