@@ -73,6 +73,7 @@
             this.btnEdit.TabIndex = 0;
             this.btnEdit.Text = "Sunting";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnAdd
             // 
@@ -112,6 +113,7 @@
             this.dgv.Size = new System.Drawing.Size(914, 425);
             this.dgv.TabIndex = 5;
             this.dgv.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomer_CellDoubleClick);
+            this.dgv.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_RowEnter);
             // 
             // bindingNavigator
             // 

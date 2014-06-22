@@ -18,7 +18,8 @@ namespace Muse
     {
         private Contract _contract;
         private Action<string, string> _assignData;
-        private RestoContext _context;
+        private RestoContext _db;
+        private int _rowIndex;
 
         public FormListing(Contract contract)
         {
@@ -37,24 +38,24 @@ namespace Muse
         {
             base.OnLoad(e);
             dgv.AutoGenerateColumns = true;
-            _context = new RestoContext();
+            _db = new RestoContext();
 
             switch (_contract)
             {
                 case Contract.Customer:
                     Text += " Pelanggan";
-                    _context.Customers.Load();
-                    bindingSource.DataSource = _context.Customers.Local.ToBindingList();
+                    _db.Customers.Load();
+                    bindingSource.DataSource = _db.Customers.Local.ToBindingList();
                     break;
                 case Contract.Product:
                     Text += " Produk";
-                    _context.Products.Load();
-                    bindingSource.DataSource = _context.Products.Local.ToBindingList();
+                    _db.Products.Load();
+                    bindingSource.DataSource = _db.Products.Local.ToBindingList();
                     break;
                 case Contract.User:
                     Text += " Pengguna";
-                    _context.Users.Load();
-                    bindingSource.DataSource = _context.Users.Local.ToBindingList();
+                    _db.Users.Load();
+                    bindingSource.DataSource = _db.Users.Local.ToBindingList();
                     break;
             }
         }
@@ -64,16 +65,49 @@ namespace Muse
             switch (_contract)
             {
                 case Contract.Customer:
-                    new FormAddCustomer(customer => _context.Customers.Add(customer)).ShowDialog();
+                    new FormAddCustomer(customer => _db.Customers.Add(customer)).ShowDialog();
                     break;
                 case Contract.Product:
-                    new FormAddProduct(product => _context.Products.Add(product)).ShowDialog();
+                    new FormAddProduct(product => _db.Products.Add(product)).ShowDialog();
                     break;
                 case Contract.User:
-                    new FormAddUser(user => _context.Users.Add(user)).ShowDialog();
+                    new FormAddUser(user => _db.Users.Add(user)).ShowDialog();
                     break;
             }
-            _context.SaveChanges();
+
+            _db.SaveChanges();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            var id = int.Parse(dgv.Rows[_rowIndex].Cells["id"].Value.ToString());
+
+            switch (_contract)
+            {
+                case Contract.Customer:
+                    new FormAddCustomer(_db.Customers.Find(id) ,customer =>
+                    {
+                        _db.Customers.Attach(customer);
+                        _db.Entry(customer).State = EntityState.Modified;
+                    }).ShowDialog();
+                    break;
+                case Contract.Product:
+                    new FormAddProduct(product =>
+                    {
+                        _db.Products.Attach(product);
+                        _db.Entry(product).State = EntityState.Modified;
+                    }).ShowDialog();
+                    break;
+                case Contract.User:
+                    new FormAddUser(user =>
+                    {
+                        _db.Users.Attach(user);
+                        _db.Entry(user).State = EntityState.Modified;
+                    }).ShowDialog();
+                    break;
+            }
+
+            _db.SaveChanges();
         }
 
         private void dgvCustomer_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -84,6 +118,11 @@ namespace Muse
                 _assignData(cells["id"].Value.ToString(), cells["name"].Value.ToString());
                 Close();
             }
+        }
+
+        private void dgv_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            _rowIndex = e.RowIndex;
         }
     }
 }

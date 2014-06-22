@@ -41,7 +41,7 @@ namespace Muse
             var address = txtAddress.Text.Trim();
             var email = txtEmail.Text.Trim();
             var phone = txtPhone.Text.Trim();
-            Nullable<bool> gender = null;
+            bool? gender = null;
             var now = DateTime.Now;
 
             if (rdoMale.Checked)
