@@ -125,5 +125,29 @@ namespace Muse
         {
             _rowIndex = e.RowIndex;
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            var id = int.Parse(dgv.Rows[_rowIndex].Cells["id"].Value.ToString());
+
+            switch (_contract)
+            {
+                case Contract.Customer:
+                    var dropCustomer = _db.Customers.SingleOrDefault(x => x.Id == id);
+                    if (dropCustomer != null)
+                    {
+                        _db.Customers.Remove(dropCustomer);
+                    }
+                    break;
+                case Contract.Product:
+
+                    break;
+                case Contract.User:
+
+                    break;
+            }
+
+            _db.SaveChanges();
+        }
     }
 }
