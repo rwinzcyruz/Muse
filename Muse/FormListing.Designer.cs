@@ -64,6 +64,7 @@
             this.btnDelete.TabIndex = 0;
             this.btnDelete.Text = "Hapus";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnEdit
             // 
@@ -133,7 +134,7 @@
             this.bindingNavigatorSeparator5,
             this.bindingNavigatorAddNewItem1,
             this.bindingNavigatorDeleteItem1});
-            this.bindingNavigator.Location = new System.Drawing.Point(0, 476);
+            this.bindingNavigator.Location = new System.Drawing.Point(0, 477);
             this.bindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem1;
             this.bindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem1;
             this.bindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem1;
@@ -233,7 +234,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(944, 501);
+            this.ClientSize = new System.Drawing.Size(944, 502);
             this.Controls.Add(this.bindingNavigator);
             this.Controls.Add(this.dgv);
             this.Controls.Add(this.panel1);

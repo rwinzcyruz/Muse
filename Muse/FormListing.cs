@@ -125,5 +125,24 @@ namespace Muse
         {
             _rowIndex = e.RowIndex;
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            var id = int.Parse(dgv.Rows[_rowIndex].Cells["id"].Value.ToString());
+            DialogResult res;
+            switch (_contract)
+            {
+                case Contract.Customer:
+                    res = MessageBox.Show("Yakin hapus data pelanggan ini?","Hapus",MessageBoxButtons.YesNo,
+                          MessageBoxIcon.Question,MessageBoxDefaultButton.Button2);
+                    //break;
+                case Contract.Product:
+                    MessageBox.Show("Yakin hapus data produk ini?");
+                    break;
+                case Contract.User:
+                    MessageBox.Show("Yakin hapus data user ini?");
+                    break;
+            }
+        }
     }
 }

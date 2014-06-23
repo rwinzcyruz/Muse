@@ -32,8 +32,14 @@ namespace Muse
         {
             var name = txtName.Text.Trim();
             var price = int.Parse(txtPrice.Text);
+            MessageBox.Show(price.ToString());
             var desc = txtName.Text.Trim();
             var now = DateTime.Now;
+
+            if (name == "")
+                MessageBox.Show("Nama harus diisi"); 
+            //if(typeof price == "int")
+                MessageBox.Show("Harga harap diinput dengan benar");
 
             _saveModel(new Product
             {
