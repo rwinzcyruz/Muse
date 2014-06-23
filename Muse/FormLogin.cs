@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Muse.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,13 +29,17 @@ namespace Muse
                 return;
             }
 
-            if (username == "admin" && password == "admin")
+            using (var db = new RestoContext())
             {
-                this.DialogResult = DialogResult.OK;
-            }
-            else
-            {
-                MessageBox.Show("username/password yang anda masukkan salah");
+                var user = db.Users.Where(x => x.Username == username).FirstOrDefault();
+                if (user != null && user.Password == password)
+                {
+                    this.DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    MessageBox.Show("username/password yang anda masukkan salah");
+                }
             }
         }
     }
