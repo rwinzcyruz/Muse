@@ -1,9 +1,9 @@
 namespace Muse.Migrations
 {
+    using Muse.Model;
     using System;
     using System.Collections.Generic;
     using System.Data.Entity.Migrations;
-    using Muse.Model;
 
     internal sealed class Configuration : DbMigrationsConfiguration<RestoContext>
     {
@@ -13,54 +13,112 @@ namespace Muse.Migrations
         }
 
         protected override void Seed(RestoContext context)
-        {            
+        {
             var now = DateTime.Now;
+            var rand = new Random();
+            var genders = Enum.GetValues(typeof(Gender));
+            int i;
 
-            context.Users.AddOrUpdate(
-                i => i.Name,
-                new User { Name = "Admin", Email = "admin@muse.com", Username = "admin", Password = "admin", Address = "Jl. Asia, Medan", Phone = "0878-0011-1100", CreatedAt = now, UpdatedAt = now },
-                new User { Name = "User", Email = "user@muse.com", Username = "user", Password = "user", Address = "Jl. Gatot Subroto, Medan", Phone = "0878-0088-8800", CreatedAt = now, UpdatedAt = now }
-            );
+            var users = new List<User>();
+            var products = new List<Product>();
+            var customers = new List<Customer>();
+            var bills = new List<Bill>();
+            var orders = new List<Order>();
 
-            context.Products.AddOrUpdate(
-                i => i.Name,
-                new Product { Name = "Nasi Goreng Ayam", Description = "Nasi Goreng Ayam", Price = 20000, CreatedAt = now, UpdatedAt = now },
-                new Product { Name = "Soto Medan", Description = "Soto Medan", Price = 25000, CreatedAt = now, UpdatedAt = now },
-                new Product { Name = "Sate Padang Special", Description = "Sate Padang Special", Price = 10000, CreatedAt = now, UpdatedAt = now }
-            );
+            var accounts = new[] { "Admin", "User" };
+            var names = new[]
+            {
+                "Jackson", "Aiden", "Liam", "Lucas", "Noah", "Mason", "Jayden", "Ethan", "Jacob", "Jack",
+                "Caden", "Logan", "Benjamin", "Michael", "Caleb", "Sophia", "Emma", "Olivia", "Isabella", "Mia",
+                "Ava", "Lily", "Zoe", "Emily", "Chloe", "Layla", "Madison", "Madelyn", "Abigail", "Aubrey"
+            };
+            var menus = new[] { "Nasi Goreng Ayam", "Soto Medan", "Sate Padang Special", "Lontong Sayur", "Pecel Lele", "Nasi Kangkung Belacan" };
+            var addresses = new[]
+            {
+                "Wahidin", "Gatot Subroto", "Yos Sudarso", "Asia", "Thamrin", "Aksara", "Guru Patimpus", "Bakaran Batu", "Krakatau", "Sutomo",
+                "Iskandar Muda", "Jamin Ginting", "Katamso", "Yos Rizal", "Sudirman", "Multatuli", "Diponegoro", "Gajah Mada", "Irian Barat", "Pemuda"
+            };
 
-            context.Customers.AddOrUpdate(
-                i => i.Name,
-                new Customer { Name = "Aiden", Email = "aiden@gmail.com", Address = "Jl. Wahidin, Medan", Phone = "0878-1234-5679", Gender = Gender.Male, CreatedAt = now, UpdatedAt = now },
-                new Customer { Name = "Liam", Email = "liam@gmail.com", Address = "Jl. Wahidin, Medan", Phone = "0878-1234-5679", Gender = Gender.Male, CreatedAt = now, UpdatedAt = now },
-                new Customer { Name = "Lucas", Email = "lucas@gmail.com", Address = "Jl. Wahidin, Medan", Phone = "0878-1234-5679", Gender = Gender.Male, CreatedAt = now, UpdatedAt = now },
-                new Customer { Name = "Noah", Email = "noah@gmail.com", Address = "Jl. Wahidin, Medan", Phone = "0878-1234-5679", Gender = Gender.Male, CreatedAt = now, UpdatedAt = now },
-                new Customer { Name = "Mason", Email = "mason@gmail.com", Address = "Jl. Wahidin, Medan", Phone = "0878-1234-5679", Gender = Gender.Female, CreatedAt = now, UpdatedAt = now },
-                new Customer { Name = "Jayden", Email = "jayden@gmail.com", Address = "Jl. Wahidin, Medan", Phone = "0878-1234-5679", Gender = Gender.Female, CreatedAt = now, UpdatedAt = now },
-                new Customer { Name = "Ethan", Email = "ethan@gmail.com", Address = "Jl. Wahidin, Medan", Phone = "0878-1234-5679", Gender = Gender.Male, CreatedAt = now, UpdatedAt = now },
-                new Customer { Name = "Jacob", Email = "jacob@gmail.com", Address = "Jl. Wahidin, Medan", Phone = "0878-1234-5679", Gender = Gender.Male, CreatedAt = now, UpdatedAt = now },
-                new Customer { Name = "Jack", Email = "jack@gmail.com", Address = "Jl. Wahidin, Medan", Phone = "0878-1234-5679", Gender = Gender.Male, CreatedAt = now, UpdatedAt = now },
-                new Customer { Name = "Caden", Email = "caden@gmail.com", Address = "Jl. Wahidin, Medan", Phone = "0878-1234-5679", Gender = Gender.Female, CreatedAt = now, UpdatedAt = now },
-                new Customer { Name = "Logan", Email = "logan@gmail.com", Address = "Jl. Wahidin, Medan", Phone = "0878-1234-5679", Gender = Gender.Male, CreatedAt = now, UpdatedAt = now },
-                new Customer { Name = "Benjamin", Email = "benjamin@gmail.com", Address = "Jl. Wahidin, Medan", Phone = "0878-1234-5679", Gender = Gender.Male, CreatedAt = now, UpdatedAt = now },
-                new Customer { Name = "Michael", Email = "michael@gmail.com", Address = "Jl. Wahidin, Medan", Phone = "0878-1234-5679", Gender = Gender.Male, CreatedAt = now, UpdatedAt = now },
-                new Customer { Name = "Caleb", Email = "caleb@gmail.com", Address = "Jl. Wahidin, Medan", Phone = "0878-1234-5679", Gender = Gender.Male, CreatedAt = now, UpdatedAt = now },
-                new Customer { Name = "Ryan", Email = "ryan@gmail.com", Address = "Jl. Wahidin, Medan", Phone = "0878-1234-5679", Gender = Gender.Male, CreatedAt = now, UpdatedAt = now },
-                new Customer { Name = "Alexander", Email = "alexander@gmail.com", Address = "Jl. Wahidin, Medan", Phone = "0878-1234-5679", Gender = Gender.Male, CreatedAt = now, UpdatedAt = now },
-                new Customer { Name = "Elijah", Email = "elijah@gmail.com", Address = "Jl. Wahidin, Medan", Phone = "0878-1234-5679", Gender = Gender.Unknown, CreatedAt = now, UpdatedAt = now },
-                new Customer { Name = "James", Email = "james@gmail.com", Address = "Jl. Wahidin, Medan", Phone = "0878-1234-5679", Gender = Gender.Male, CreatedAt = now, UpdatedAt = now },
-                new Customer { Name = "William", Email = "william@gmail.com", Address = "Jl. Wahidin, Medan", Phone = "0878-1234-5679", Gender = Gender.Male, CreatedAt = now, UpdatedAt = now },
-                new Customer { Name = "Oliver", Email = "oliver@gmail.com", Address = "Jl. Wahidin, Medan", Phone = "0878-1234-5679", Gender = Gender.Female, CreatedAt = now, UpdatedAt = now },
-                new Customer { Name = "Connor", Email = "connor@gmail.com", Address = "Jl. Wahidin, Medan", Phone = "0878-1234-5679", Gender = Gender.Male, CreatedAt = now, UpdatedAt = now },
-                new Customer { Name = "Matthew", Email = "matthew@gmail.com", Address = "Jl. Wahidin, Medan", Phone = "0878-1234-5679", Gender = Gender.Male, CreatedAt = now, UpdatedAt = now },
-                new Customer { Name = "Daniel", Email = "daniel@gmail.com", Address = "Jl. Wahidin, Medan", Phone = "0878-1234-5679", Gender = Gender.Male, CreatedAt = now, UpdatedAt = now },
-                new Customer { Name = "Luke", Email = "luke@gmail.com", Address = "Jl. Wahidin, Medan", Phone = "0878-1234-5679", Gender = Gender.Female, CreatedAt = now, UpdatedAt = now },
-                new Customer { Name = "Brayden", Email = "brayden@gmail.com", Address = "Jl. Wahidin, Medan", Phone = "0878-1234-5679", Gender = Gender.Male, CreatedAt = now, UpdatedAt = now },
-                new Customer { Name = "Jayce", Email = "jayce@gmail.com", Address = "Jl. Wahidin, Medan", Phone = "0878-1234-5679", Gender = Gender.Male, CreatedAt = now, UpdatedAt = now },
-                new Customer { Name = "Henry", Email = "henry@gmail.com", Address = "Jl. Wahidin, Medan", Phone = "0878-1234-5679", Gender = Gender.Male, CreatedAt = now, UpdatedAt = now },
-                new Customer { Name = "Carter", Email = "carter@gmail.com", Address = "Jl. Wahidin, Medan", Phone = "0878-1234-5679", Gender = Gender.Male, CreatedAt = now, UpdatedAt = now },
-                new Customer { Name = "Dylan", Email = "dylan@gmail.com", Address = "Jl. Wahidin, Medan", Phone = "0878-1234-5679", Gender = Gender.Male, CreatedAt = now, UpdatedAt = now }
-            );
+            i = 0;
+            foreach (var account in accounts)
+            {
+                var lower = account.ToLower();
+                users.Add(new User
+                {
+                    Id = ++i,
+                    Name = account,
+                    Email = lower + "@muse.com",
+                    Username = lower,
+                    Password = lower,
+                    Address = "Jl. " + addresses[rand.Next(addresses.Length)] + ", Medan",
+                    Phone = String.Format("0878-{0}-{1}", rand.Next(1000, 10000), rand.Next(1000, 10000)),
+                    Gender = (Gender)genders.GetValue(rand.Next(genders.Length)),
+                    CreatedAt = now,
+                    UpdatedAt = now
+                });
+            }
+
+            i = 0;
+            foreach (var menu in menus)
+            {
+                products.Add(new Product
+                {
+                    Id = ++i,
+                    Name = menu,
+                    Description = menu,
+                    Price = rand.Next(10, 100) * 1000,
+                    CreatedAt = now,
+                    UpdatedAt = now
+                });
+            }
+
+            i = 0;
+            foreach (var name in names)
+            {
+                customers.Add(new Customer
+                {
+                    Id = ++i,
+                    Name = name,
+                    Email = name.ToLower() + "@gmail.com",
+                    Address = "Jl. " + addresses[rand.Next(addresses.Length)] + ", Medan",
+                    Phone = String.Format("0878-{0}-{1}", rand.Next(1000, 10000), rand.Next(1000, 10000)),
+                    Gender = (Gender)genders.GetValue(rand.Next(genders.Length)),
+                    CreatedAt = now,
+                    UpdatedAt = now
+                });
+            }
+
+            i = 0;
+            customers.ForEach(customer =>
+            {
+                bills.Add(new Bill
+                {
+                    Id = ++i,
+                    CustomerId = customer.Id,
+                    Paid = rand.NextDouble() < 0.5,
+                    Tax = rand.NextDouble() < 0.5 ? 0.1 : 0,
+                    CreatedAt = now,
+                    UpdatedAt = now
+                });
+            });
+
+            bills.ForEach(bill =>
+            {
+                orders.Add(new Order
+                {
+                    BillId = bill.Id,
+                    ProductId = products[rand.Next(products.Count)].Id,
+                    Quantity = rand.Next(1, 10),
+                    CreatedAt = now,
+                    UpdatedAt = now
+                });
+            });
+
+            context.Users.AddOrUpdate(x => x.Name, users.ToArray());
+            context.Products.AddOrUpdate(x => x.Name, products.ToArray());
+            context.Customers.AddOrUpdate(x => x.Name, customers.ToArray());
+            context.Bills.AddOrUpdate(x => x.CustomerId, bills.ToArray());
+            context.Orders.AddOrUpdate(x => new { x.BillId, x.ProductId }, orders.ToArray());
         }
     }
 }

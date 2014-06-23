@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Muse.Model
 {
@@ -11,13 +12,24 @@ namespace Muse.Model
         }
 
         public int Id { get; set; }
-        public double Tax { get; set; }
-        public bool Paid { get; set; }
+
+        [Required]
         public int CustomerId { get; set; }
+
+        [Required]
+        public double Tax { get; set; }
+
+        [Required]
+        public bool Paid { get; set; }
+
+        [Required]
         public DateTime CreatedAt { get; set; }
+
+        [Required]
         public DateTime UpdatedAt { get; set; }
 
         public virtual Customer Customer { get; set; }
+
         public virtual List<Order> Orders { get; set; }
     }
 }

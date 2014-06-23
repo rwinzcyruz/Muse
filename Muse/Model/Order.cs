@@ -1,17 +1,28 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Muse.Model
 {
     public class Order
     {
-        public int Id { get; set; }
-        public int Quantity { get; set; }
+        [Key, Column(Order = 1), Required]
         public int BillId { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
+
+        [Key, Column(Order = 2), Required]
         public int ProductId { get; set; }
 
+        [Required]
+        public int Quantity { get; set; }
+
+        [Required]
+        public DateTime CreatedAt { get; set; }
+
+        [Required]
+        public DateTime UpdatedAt { get; set; }
+
         public virtual Bill Bill { get; set; }
+
         public virtual Product Product { get; set; }
     }
 }
