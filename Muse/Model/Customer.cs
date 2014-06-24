@@ -6,10 +6,7 @@ namespace Muse.Model
 {
     public class Customer
     {
-        public Customer()
-        {
-            this.Bills = new List<Bill>();
-        }
+        private readonly ObservableListSource<Bill> _bills = new ObservableListSource<Bill>();
 
         public int Id { get; set; }
 
@@ -34,6 +31,6 @@ namespace Muse.Model
         [Required]
         public DateTime UpdatedAt { get; set; }
 
-        public virtual List<Bill> Bills { get; set; }
+        public virtual ObservableListSource<Bill> Bills { get { return _bills; } }
     }
 }

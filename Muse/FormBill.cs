@@ -1,5 +1,6 @@
 ﻿using Muse.Model;
 using System;
+using System.ComponentModel;
 using System.Data.Entity;
 using System.Linq;
 using System.Windows.Forms;
@@ -19,11 +20,17 @@ namespace Muse
         {
             base.OnLoad(e);
             dgv.AutoGenerateColumns = true;
+            
             _db = new RestoContext();
+            _db.Bills.Where(x => x.Paid == false).OrderByDescending(x => x.UpdatedAt).Load();
+            bindingSource.DataSource = _db.Bills.Local.ToBindingList();
+            //bindingSource.DataSource = _db.Bills.Local.Select(x => new { x.Id, x.Customer.Name, x.Paid, x.Tax, x.CreatedAt, x.UpdatedAt }).ToList();
+        }
 
-            _db.Bills.Load();
-            bindingSource.DataSource = _db.Bills.Local.Select(x => new { x.Id, x.Customer.Name, x.Paid, x.Tax, x.CreatedAt, x.UpdatedAt })
-                .Where(x => x.Paid == false).OrderByDescending(x => x.UpdatedAt).ToList();
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+            this._db.Dispose();
         }
 
         private void btnCreateBill_Click(object sender, EventArgs e)

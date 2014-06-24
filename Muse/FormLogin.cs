@@ -32,7 +32,7 @@ namespace Muse
             using (var db = new RestoContext())
             {
                 var user = db.Users.Where(x => x.Username == username).FirstOrDefault();
-                if (user != null && user.Password == password)
+                if (user != null && user.Password == Utility.SHA1Digest(password))
                 {
                     this.DialogResult = DialogResult.OK;
                 }

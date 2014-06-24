@@ -39,26 +39,32 @@ namespace Muse
         {
             base.OnLoad(e);
             dgv.AutoGenerateColumns = true;
-            _db = new RestoContext();
 
+            _db = new RestoContext();
             switch (_contract)
             {
                 case Contract.Customer:
                     Text += " Pelanggan";
-                    _db.Customers.Load();
+                    _db.Customers.OrderByDescending(x => x.UpdatedAt).Load();
                     bindingSource.DataSource = _db.Customers.Local.ToBindingList();
                     break;
                 case Contract.Product:
                     Text += " Produk";
-                    _db.Products.Load();
+                    _db.Products.OrderByDescending(x => x.UpdatedAt).Load();
                     bindingSource.DataSource = _db.Products.Local.ToBindingList();
                     break;
                 case Contract.User:
                     Text += " Pengguna";
-                    _db.Users.Load();
+                    _db.Users.OrderByDescending(x => x.UpdatedAt).Load();
                     bindingSource.DataSource = _db.Users.Local.ToBindingList();
                     break;
             }
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+            this._db.Dispose();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

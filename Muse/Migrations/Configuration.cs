@@ -49,7 +49,7 @@ namespace Muse.Migrations
                     Name = account,
                     Email = lower + "@muse.com",
                     Username = lower,
-                    Password = lower,
+                    Password = Utility.SHA1Digest(lower),
                     Address = "Jl. " + addresses[rand.Next(addresses.Length)] + ", Medan",
                     Phone = String.Format("0878-{0}-{1}", rand.Next(1000, 10000), rand.Next(1000, 10000)),
                     Gender = (Gender)genders.GetValue(rand.Next(genders.Length)),

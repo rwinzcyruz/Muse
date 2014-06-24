@@ -6,10 +6,7 @@ namespace Muse.Model
 {
     public class Product
     {
-        public Product()
-        {
-            this.Orders = new List<Order>();
-        }
+        private readonly ObservableListSource<Order> _orders = new ObservableListSource<Order>();
 
         public int Id { get; set; }
 
@@ -28,6 +25,6 @@ namespace Muse.Model
         [Required]
         public DateTime UpdatedAt { get; set; }
 
-        public virtual List<Order> Orders { get; set; }
+        public virtual ObservableListSource<Order> Orders { get { return _orders; } }
     }
 }
