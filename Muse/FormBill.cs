@@ -29,12 +29,29 @@ namespace Muse
         private void btnCreateBill_Click(object sender, EventArgs e)
         {
             var result = new FormAddBill().ShowDialog();
-
+            //mUtilities.Validate(dgv.
             if (result == DialogResult.OK)
             {
                 _db.Bills.Load();
                 bindingSource.DataSource = _db.Bills.Local.Select(x => new { x.Id, x.Customer.Name, x.Paid, x.Tax, x.CreatedAt, x.UpdatedAt })
                     .Where(x => x.Paid == false).OrderByDescending(x => x.UpdatedAt).ToList();
+            }
+        }
+
+        private void btnUpdateBill_Click(object sender, EventArgs e)
+        {
+            FormAddBill frmAddBill = new FormAddBill();
+            //var result = new FormAddBill().ShowDialog();
+            var result = frmAddBill.ShowDialog();
+            frmAddBill.btnAssignCustomer.Enabled = false;
+            frmAddBill.btnBrowseCustomer.Enabled = false;
+            frmAddBill.btnBrowseProduct.Enabled = false;
+            
+            if (result == DialogResult.OK)
+            {
+                _db.Bills.Load();
+                //bindingSource.DataSource = _db.Bills.Local.Select(x => new { x.Id, x.Customer.Name, x.Paid, x.Tax, x.CreatedAt, x.UpdatedAt })
+                //    .Where(x => x.Paid == false).OrderByDescending(x => x.UpdatedAt).ToList();
             }
         }
     }

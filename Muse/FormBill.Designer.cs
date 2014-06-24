@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBill));
             this.btnCreateBill = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnUpdateBill = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.dgv = new System.Windows.Forms.DataGridView();
@@ -66,14 +66,15 @@
             this.btnCreateBill.UseVisualStyleBackColor = true;
             this.btnCreateBill.Click += new System.EventHandler(this.btnCreateBill_Click);
             // 
-            // button2
+            // btnUpdateBill
             // 
-            this.button2.Location = new System.Drawing.Point(84, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Ubah Nota";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnUpdateBill.Location = new System.Drawing.Point(84, 3);
+            this.btnUpdateBill.Name = "btnUpdateBill";
+            this.btnUpdateBill.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdateBill.TabIndex = 2;
+            this.btnUpdateBill.Text = "Ubah Nota";
+            this.btnUpdateBill.UseVisualStyleBackColor = true;
+            this.btnUpdateBill.Click += new System.EventHandler(this.btnUpdateBill_Click);
             // 
             // button3
             // 
@@ -115,7 +116,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.btnCreateBill);
-            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.btnUpdateBill);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
@@ -262,7 +263,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnCreateBill;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnUpdateBill;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DataGridView dgv;

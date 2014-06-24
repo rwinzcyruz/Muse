@@ -62,12 +62,36 @@ namespace Muse
                     };
 
                     db.Bills.Add(bill);
-                    db.SaveChanges();
+                    //db.SaveChanges();
                 }
 
                 btnAssignCustomer.Enabled = false;
                 DialogResult = DialogResult.OK;
             }
+        }
+
+        private void FormAddBill_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAddOrder_Click(object sender, EventArgs e)
+        {
+            var quatity = int.Parse(txtQuantity.Text);
+            var now = DateTime.Now;
+            using (var db = new RestoContext())
+            {
+                db.Orders.Add(new Order
+                {
+                    Quantity = quatity,
+                    CreatedAt = now,
+                    UpdatedAt = now
+                });
+                db.SaveChanges();
+            }
+            //bindingSource.DataSource = _db.Bills.Local.Select(x => new { x.Id, x.Customer.Name, x.Paid, x.Tax, x.CreatedAt, x.UpdatedAt })
+            //    .Where(x => x.Paid == false).OrderByDescending(x => x.UpdatedAt).ToList();
+            //dataGridView1.DataSource = _db.Orders.Local.Select(x => new { x.
         }
     }
 }
