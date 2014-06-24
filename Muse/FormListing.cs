@@ -135,7 +135,13 @@ namespace Muse
                 case Contract.Customer:
                     res = MessageBox.Show("Yakin hapus data pelanggan ini?","Hapus",MessageBoxButtons.YesNo,
                           MessageBoxIcon.Question,MessageBoxDefaultButton.Button2);
-                    //break;
+                        
+                    var dropCustomer = _db.Customers.SingleOrDefault(x => x.Id == id);
+                    if (dropCustomer != null)
+                    {
+                        _db.Customers.Remove(dropCustomer);
+                    }
+                    break;
                 case Contract.Product:
                     MessageBox.Show("Yakin hapus data produk ini?");
                     break;
@@ -143,6 +149,8 @@ namespace Muse
                     MessageBox.Show("Yakin hapus data user ini?");
                     break;
             }
+
+            _db.SaveChanges();
         }
     }
 }
