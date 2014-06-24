@@ -35,14 +35,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.dgv = new System.Windows.Forms.DataGridView();
-            this.taxDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.paidDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.customerIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createdAtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.updatedAtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ordersDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.bindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
@@ -56,11 +48,12 @@
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator)).BeginInit();
             this.bindingNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCreateBill
@@ -109,76 +102,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv.AutoGenerateColumns = false;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.taxDataGridViewTextBoxColumn,
-            this.paidDataGridViewCheckBoxColumn,
-            this.customerIdDataGridViewTextBoxColumn,
-            this.createdAtDataGridViewTextBoxColumn,
-            this.updatedAtDataGridViewTextBoxColumn,
-            this.customerDataGridViewTextBoxColumn,
-            this.ordersDataGridViewTextBoxColumn});
             this.dgv.DataSource = this.bindingSource;
             this.dgv.Location = new System.Drawing.Point(15, 48);
             this.dgv.Name = "dgv";
             this.dgv.ReadOnly = true;
             this.dgv.Size = new System.Drawing.Size(914, 425);
             this.dgv.TabIndex = 4;
-            // 
-            // taxDataGridViewTextBoxColumn
-            // 
-            this.taxDataGridViewTextBoxColumn.DataPropertyName = "Tax";
-            this.taxDataGridViewTextBoxColumn.HeaderText = "Tax";
-            this.taxDataGridViewTextBoxColumn.Name = "taxDataGridViewTextBoxColumn";
-            this.taxDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // paidDataGridViewCheckBoxColumn
-            // 
-            this.paidDataGridViewCheckBoxColumn.DataPropertyName = "Paid";
-            this.paidDataGridViewCheckBoxColumn.FalseValue = "Pending";
-            this.paidDataGridViewCheckBoxColumn.HeaderText = "Paid";
-            this.paidDataGridViewCheckBoxColumn.IndeterminateValue = "Unknown";
-            this.paidDataGridViewCheckBoxColumn.Name = "paidDataGridViewCheckBoxColumn";
-            this.paidDataGridViewCheckBoxColumn.ReadOnly = true;
-            this.paidDataGridViewCheckBoxColumn.TrueValue = "Okay";
-            // 
-            // customerIdDataGridViewTextBoxColumn
-            // 
-            this.customerIdDataGridViewTextBoxColumn.DataPropertyName = "CustomerId";
-            this.customerIdDataGridViewTextBoxColumn.HeaderText = "CustomerId";
-            this.customerIdDataGridViewTextBoxColumn.Name = "customerIdDataGridViewTextBoxColumn";
-            this.customerIdDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // createdAtDataGridViewTextBoxColumn
-            // 
-            this.createdAtDataGridViewTextBoxColumn.DataPropertyName = "CreatedAt";
-            this.createdAtDataGridViewTextBoxColumn.HeaderText = "CreatedAt";
-            this.createdAtDataGridViewTextBoxColumn.Name = "createdAtDataGridViewTextBoxColumn";
-            this.createdAtDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // updatedAtDataGridViewTextBoxColumn
-            // 
-            this.updatedAtDataGridViewTextBoxColumn.DataPropertyName = "UpdatedAt";
-            this.updatedAtDataGridViewTextBoxColumn.HeaderText = "UpdatedAt";
-            this.updatedAtDataGridViewTextBoxColumn.Name = "updatedAtDataGridViewTextBoxColumn";
-            this.updatedAtDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // customerDataGridViewTextBoxColumn
-            // 
-            this.customerDataGridViewTextBoxColumn.DataPropertyName = "Customer";
-            this.customerDataGridViewTextBoxColumn.HeaderText = "Customer";
-            this.customerDataGridViewTextBoxColumn.Name = "customerDataGridViewTextBoxColumn";
-            this.customerDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // ordersDataGridViewTextBoxColumn
-            // 
-            this.ordersDataGridViewTextBoxColumn.DataPropertyName = "Orders";
-            this.ordersDataGridViewTextBoxColumn.HeaderText = "Orders";
-            this.ordersDataGridViewTextBoxColumn.Name = "ordersDataGridViewTextBoxColumn";
-            this.ordersDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // bindingSource
-            // 
-            this.bindingSource.DataSource = typeof(Muse.Model.Bill);
             // 
             // panel1
             // 
@@ -319,13 +248,12 @@
             this.MinimumSize = new System.Drawing.Size(960, 540);
             this.Name = "FormBill";
             this.Text = "Daftar Nota";
-            this.Load += new System.EventHandler(this.FormBill_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator)).EndInit();
             this.bindingNavigator.ResumeLayout(false);
             this.bindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -339,13 +267,6 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DataGridView dgv;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.BindingSource bindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn taxDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn paidDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn customerIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn createdAtDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn updatedAtDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn customerDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ordersDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingNavigator bindingNavigator;
         private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
@@ -359,6 +280,7 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
+        private System.Windows.Forms.BindingSource bindingSource;
 
     }
 }

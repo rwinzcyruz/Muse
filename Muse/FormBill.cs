@@ -1,25 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using Muse.Model;
+using System;
+using System.Data.Entity;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using Muse.Model;
 
 namespace Muse
 {
     public partial class FormBill : Form
     {
+        private RestoContext _db;
+
         public FormBill()
         {
             InitializeComponent();
         }
 
-        private void FormBill_Load(object sender, EventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
-            _LoadData();
+            base.OnLoad(e);
+            dgv.AutoGenerateColumns = true;
+            _db = new RestoContext();
+
+            _db.Bills.Load();
+            bindingSource.DataSource = _db.Bills.Local.Select(x => new { x.Customer.Name, x.Paid, x.Tax, x.CreatedAt, x.UpdatedAt })
+                .Where(x => x.Paid == false).OrderBy(x => x.UpdatedAt).ToList();
         }
 
         private void btnCreateBill_Click(object sender, EventArgs e)
@@ -29,16 +33,7 @@ namespace Muse
             switch (result)
             {
                 case DialogResult.OK:
-                    _LoadData();
                     break;
-            }
-        }
-
-        private void _LoadData()
-        {
-            using (var db = new RestoContext())
-            {
-                bindingSource.DataSource = db.Bills.ToList();
             }
         }
     }
