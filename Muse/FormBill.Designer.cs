@@ -32,8 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBill));
             this.btnCreateBill = new System.Windows.Forms.Button();
             this.btnUpdateBill = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnDeleteNota = new System.Windows.Forms.Button();
+            this.btnReportNota = new System.Windows.Forms.Button();
             this.dgv = new System.Windows.Forms.DataGridView();
             this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
@@ -76,24 +76,24 @@
             this.btnUpdateBill.UseVisualStyleBackColor = true;
             this.btnUpdateBill.Click += new System.EventHandler(this.btnUpdateBill_Click);
             // 
-            // button3
+            // btnDeleteNota
             // 
-            this.button3.Location = new System.Drawing.Point(165, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Hapus Nota";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnDeleteNota.Location = new System.Drawing.Point(165, 3);
+            this.btnDeleteNota.Name = "btnDeleteNota";
+            this.btnDeleteNota.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteNota.TabIndex = 2;
+            this.btnDeleteNota.Text = "Hapus Nota";
+            this.btnDeleteNota.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnReportNota
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(799, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(118, 23);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Laporan Nota";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnReportNota.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReportNota.Location = new System.Drawing.Point(799, 3);
+            this.btnReportNota.Name = "btnReportNota";
+            this.btnReportNota.Size = new System.Drawing.Size(118, 23);
+            this.btnReportNota.TabIndex = 3;
+            this.btnReportNota.Text = "Laporan Nota";
+            this.btnReportNota.UseVisualStyleBackColor = true;
             // 
             // dgv
             // 
@@ -114,10 +114,10 @@
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.button4);
+            this.panel1.Controls.Add(this.btnReportNota);
             this.panel1.Controls.Add(this.btnCreateBill);
             this.panel1.Controls.Add(this.btnUpdateBill);
-            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.btnDeleteNota);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(920, 30);
@@ -264,8 +264,8 @@
 
         private System.Windows.Forms.Button btnCreateBill;
         private System.Windows.Forms.Button btnUpdateBill;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnDeleteNota;
+        private System.Windows.Forms.Button btnReportNota;
         private System.Windows.Forms.DataGridView dgv;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ordersDataGridViewTextBoxColumn;
