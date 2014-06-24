@@ -45,22 +45,28 @@ namespace Muse
 
         private void btnAssignCustomer_Click(object sender, EventArgs e)
         {
-            var customerId = int.Parse(txtCustomerCode.Text);
-            var now = DateTime.Now;
-
-            using (var db = new RestoContext())
+            if (txtCustomerCode.Text != "")
             {
-                var bill = new Bill
-                {
-                    CustomerId = customerId,
-                    Tax = 0,
-                    Paid = false,
-                    CreatedAt = now,
-                    UpdatedAt = now
-                };
+                var customerId = int.Parse(txtCustomerCode.Text);
+                var now = DateTime.Now;
 
-                db.Bills.Add(bill);
-                db.SaveChanges();
+                using (var db = new RestoContext())
+                {
+                    var bill = new Bill
+                    {
+                        CustomerId = customerId,
+                        Tax = 0,
+                        Paid = false,
+                        CreatedAt = now,
+                        UpdatedAt = now
+                    };
+
+                    db.Bills.Add(bill);
+                    db.SaveChanges();
+                }
+
+                btnAssignCustomer.Enabled = false;
+                DialogResult = DialogResult.OK;
             }
         }
     }

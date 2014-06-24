@@ -22,18 +22,19 @@ namespace Muse
             _db = new RestoContext();
 
             _db.Bills.Load();
-            bindingSource.DataSource = _db.Bills.Local.Select(x => new { x.Customer.Name, x.Paid, x.Tax, x.CreatedAt, x.UpdatedAt })
-                .Where(x => x.Paid == false).OrderBy(x => x.UpdatedAt).ToList();
+            bindingSource.DataSource = _db.Bills.Local.Select(x => new { x.Id, x.Customer.Name, x.Paid, x.Tax, x.CreatedAt, x.UpdatedAt })
+                .Where(x => x.Paid == false).OrderByDescending(x => x.UpdatedAt).ToList();
         }
 
         private void btnCreateBill_Click(object sender, EventArgs e)
         {
             var result = new FormAddBill().ShowDialog();
 
-            switch (result)
+            if (result == DialogResult.OK)
             {
-                case DialogResult.OK:
-                    break;
+                _db.Bills.Load();
+                bindingSource.DataSource = _db.Bills.Local.Select(x => new { x.Id, x.Customer.Name, x.Paid, x.Tax, x.CreatedAt, x.UpdatedAt })
+                    .Where(x => x.Paid == false).OrderByDescending(x => x.UpdatedAt).ToList();
             }
         }
     }
