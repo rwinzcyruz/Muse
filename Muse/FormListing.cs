@@ -135,18 +135,38 @@ namespace Muse
                 case Contract.Customer:
                     res = MessageBox.Show("Yakin hapus data pelanggan ini?","Hapus",MessageBoxButtons.YesNo,
                           MessageBoxIcon.Question,MessageBoxDefaultButton.Button2);
-                        
-                    var dropCustomer = _db.Customers.SingleOrDefault(x => x.Id == id);
-                    if (dropCustomer != null)
+                    if (res == DialogResult.OK)
                     {
-                        _db.Customers.Remove(dropCustomer);
+                        var dropCustomer = _db.Customers.SingleOrDefault(x => x.Id == id);
+                        if (dropCustomer != null)
+                        {
+                            _db.Customers.Remove(dropCustomer);
+                        }
                     }
                     break;
                 case Contract.Product:
-                    MessageBox.Show("Yakin hapus data produk ini?");
+                    res = MessageBox.Show("Yakin hapus data produk ini?", "Hapus", MessageBoxButtons.YesNo,
+                          MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                    if (res == DialogResult.OK)
+                    {
+                        var dropProduct = _db.Products.SingleOrDefault(x => x.Id == id);
+                        if (dropProduct != null)
+                        {
+                            _db.Products.Remove(dropProduct);
+                        }
+                    }
                     break;
                 case Contract.User:
-                    MessageBox.Show("Yakin hapus data user ini?");
+                    res = MessageBox.Show("Yakin hapus data user ini?", "Hapus", MessageBoxButtons.YesNo,
+                          MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                    if (res == DialogResult.OK)
+                    {
+                        var dropUsers = _db.Users.SingleOrDefault(x => x.Id == id);
+                        if (dropUsers != null)
+                        {
+                            _db.Users.Remove(dropUsers);
+                        }
+                    }
                     break;
             }
 

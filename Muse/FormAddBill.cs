@@ -79,14 +79,23 @@ namespace Muse
         {
             var quatity = int.Parse(txtQuantity.Text);
             var now = DateTime.Now;
+            var product = int.Parse(txtProductCode.Text);
             using (var db = new RestoContext())
             {
-                db.Orders.Add(new Order
+                //db.Orders.Add(new Order
+                //{
+                //    Quantity = quatity,
+                //    CreatedAt = now,
+                //    UpdatedAt = now
+                //});
+                var order = new Order
                 {
+                    ProductId = product,
                     Quantity = quatity,
                     CreatedAt = now,
                     UpdatedAt = now
-                });
+                };
+                db.Orders.Add(order);
                 db.SaveChanges();
             }
             //bindingSource.DataSource = _db.Bills.Local.Select(x => new { x.Id, x.Customer.Name, x.Paid, x.Tax, x.CreatedAt, x.UpdatedAt })
