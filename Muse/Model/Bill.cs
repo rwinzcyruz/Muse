@@ -19,6 +19,20 @@ namespace Muse.Model
         [Required]
         public bool Paid { get; set; }
 
+        public int Total {
+            get {
+                var sum = 0;
+                foreach (var order in Orders) {
+                    sum += order.Total;
+                }
+                return sum;
+            }
+        }
+
+        public int TaxFee { get { return Convert.ToInt32(Tax * Total); } }
+        
+        public int TotalFee { get {return Total + TaxFee; } }
+
         [Required]
         public DateTime CreatedAt { get; set; }
 

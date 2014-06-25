@@ -83,7 +83,7 @@ namespace Muse
         private void _Reload() {
             _db.Bills.Where(x => x.Paid == false).Load();
             bindingSource.DataSource = _db.Bills.Local
-                .Select(x => new { x.Id, x.Customer.Name, x.Paid, x.Tax, x.CreatedAt, x.UpdatedAt })
+                .Select(x => new { x.Id, x.Customer.Name, x.Paid, x.Total, x.TaxFee, x.TotalFee, x.CreatedAt, x.UpdatedAt })
                 .OrderByDescending(x => x.UpdatedAt).ToList();
         }
 
