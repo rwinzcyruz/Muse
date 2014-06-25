@@ -14,11 +14,43 @@ namespace Muse
     public partial class FormAddUser : Form
     {
         private Action<User> _saveModel;
+        private User _user;
+        private bool _isNew = true;
 
         public FormAddUser(Action<User> saveModel)
         {
             InitializeComponent();
             _saveModel = saveModel;
+        }
+
+        public FormAddUser(User user, Action<User> saveModel)
+        {
+            InitializeComponent();
+            _user = user;
+            _saveModel = saveModel;
+            _fillForm();
+            _isNew = false;
+            txtPassword.Enabled = false;
+            txtEmail.Enabled = false;
+            txtUsername.Enabled = false;
+        }
+
+        private void _fillForm()
+        {
+            txtName.Text = _user.Name;
+            txtUsername.Text = _user.Username;
+            txtPassword.Text = _user.Password;
+            txtAddress.Text = _user.Address;
+            txtEmail.Text = _user.Email;
+            txtPhone.Text = _user.Phone;
+            if (_user.Gender == Gender.Male)
+            {
+                rdoMale.Checked = true;
+            }
+            else if (_user.Gender == Gender.Female)
+            {
+                rdoFemale.Checked = true;
+            }
         }
 
         private void _clearForm()

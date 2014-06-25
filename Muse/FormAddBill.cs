@@ -44,6 +44,12 @@ namespace Muse {
                 _Reload();
                 txtCustomerCode.Text = _billToUpdate.CustomerId.ToString();
                 txtCustomerName.Text = _billToUpdate.Customer.Name;
+
+                if (dgv.Rows.Count == 0)
+                {
+                    editItem.Enabled = false;
+                    deleteItem.Enabled = false;
+                }
             }
         }
 

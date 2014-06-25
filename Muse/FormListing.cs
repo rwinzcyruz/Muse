@@ -99,14 +99,14 @@ namespace Muse
                     }).ShowDialog();
                     break;
                 case Contract.Product:
-                    new FormAddProduct(product =>
+                    new FormAddProduct(_db.Products.Find(id), product =>
                     {
                         _db.Products.Attach(product);
                         _db.Entry(product).State = EntityState.Modified;
                     }).ShowDialog();
                     break;
                 case Contract.User:
-                    new FormAddUser(user =>
+                    new FormAddUser(_db.Users.Find(id), user =>
                     {
                         _db.Users.Attach(user);
                         _db.Entry(user).State = EntityState.Modified;
@@ -115,6 +115,7 @@ namespace Muse
             }
 
             _db.SaveChanges();
+            dgv.Refresh();
         }
 
         private void dgvCustomer_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

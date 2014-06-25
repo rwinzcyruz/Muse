@@ -30,6 +30,7 @@ namespace Muse
             _saveModel = saveModel;
             _fillForm();
             _isNew = false;
+            txtName.Enabled = false;
         }
 
         private void _fillForm()

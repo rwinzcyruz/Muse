@@ -41,6 +41,7 @@ namespace Muse
             if (result == DialogResult.OK)
             {
                 _Reload();
+                dgv.Refresh();
             }
         }
 
@@ -85,6 +86,7 @@ namespace Muse
             bindingSource.DataSource = _db.Bills.Local
                 .Select(x => new { x.Id, x.Customer.Name, x.Paid, x.Total, x.TaxFee, x.TotalFee, x.CreatedAt, x.UpdatedAt })
                 .OrderByDescending(x => x.UpdatedAt).ToList();
+            dgv.Refresh();
         }
 
         # endregion
