@@ -53,7 +53,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(260, 237);
+            this.groupBox1.Size = new System.Drawing.Size(318, 237);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tambah Produk";
@@ -63,12 +63,12 @@
             this.txtPrice.Location = new System.Drawing.Point(80, 61);
             this.txtPrice.Mask = "00000000000000";
             this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(163, 20);
+            this.txtPrice.Size = new System.Drawing.Size(205, 20);
             this.txtPrice.TabIndex = 1;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(168, 143);
+            this.btnSave.Location = new System.Drawing.Point(210, 142);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 3;
@@ -80,14 +80,14 @@
             // 
             this.txtDesc.Location = new System.Drawing.Point(80, 100);
             this.txtDesc.Name = "txtDesc";
-            this.txtDesc.Size = new System.Drawing.Size(163, 20);
+            this.txtDesc.Size = new System.Drawing.Size(205, 20);
             this.txtDesc.TabIndex = 2;
             // 
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(80, 25);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(163, 20);
+            this.txtName.Size = new System.Drawing.Size(205, 20);
             this.txtName.TabIndex = 0;
             // 
             // label4
@@ -123,9 +123,10 @@
             // 
             // FormAddProduct
             // 
+            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(338, 303);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormAddProduct";
             this.Text = "Form Tambah Produk";

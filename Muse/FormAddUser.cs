@@ -30,6 +30,7 @@ namespace Muse
             _saveModel = saveModel;
             _fillForm();
             _isNew = false;
+            txtName.Enabled = false;
             txtPassword.Enabled = false;
             txtEmail.Enabled = false;
             txtUsername.Enabled = false;
@@ -68,7 +69,7 @@ namespace Muse
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (Utility.RequiredCheck(errorProvider, txtName, txtUsername, txtPassword, txtEmail))
+            if (!Utility.RequiredCheck(errorProvider, txtName, txtUsername, txtPassword, txtEmail))
             {
                 return;
             }

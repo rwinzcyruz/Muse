@@ -149,7 +149,7 @@
             this.groupBox1.Controls.Add(this.lblPhone);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(255, 223);
+            this.groupBox1.Size = new System.Drawing.Size(275, 223);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tambah Pelanggan";
@@ -191,9 +191,10 @@
             // 
             // FormAddCustomer
             // 
+            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(279, 262);
+            this.ClientSize = new System.Drawing.Size(299, 262);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormAddCustomer";
             this.Text = "Form Tambah Pelanggan";
