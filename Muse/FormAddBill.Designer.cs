@@ -34,7 +34,6 @@
             this.txtProductCode = new System.Windows.Forms.MaskedTextBox();
             this.txtQuantity = new System.Windows.Forms.MaskedTextBox();
             this.btnBrowseProduct = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -51,6 +50,7 @@
             this.saveItem = new System.Windows.Forms.ToolStripButton();
             this.editItem = new System.Windows.Forms.ToolStripButton();
             this.deleteItem = new System.Windows.Forms.ToolStripButton();
+            this.saveAllItem = new System.Windows.Forms.ToolStripButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -68,7 +68,6 @@
             this.groupBox1.Controls.Add(this.txtProductCode);
             this.groupBox1.Controls.Add(this.txtQuantity);
             this.groupBox1.Controls.Add(this.btnBrowseProduct);
-            this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
@@ -113,16 +112,6 @@
             this.btnBrowseProduct.Text = "•••";
             this.btnBrowseProduct.UseVisualStyleBackColor = true;
             this.btnBrowseProduct.Click += new System.EventHandler(this.btnBrowseProduct_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(806, 59);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(108, 23);
-            this.btnSave.TabIndex = 2;
-            this.btnSave.Text = "Simpan Semua";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label3
             // 
@@ -240,7 +229,8 @@
             this.bindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.saveItem,
             this.editItem,
-            this.deleteItem});
+            this.deleteItem,
+            this.saveAllItem});
             this.bindingNavigator.Location = new System.Drawing.Point(0, 0);
             this.bindingNavigator.MoveFirstItem = null;
             this.bindingNavigator.MoveLastItem = null;
@@ -278,6 +268,16 @@
             this.deleteItem.Size = new System.Drawing.Size(61, 22);
             this.deleteItem.Text = "Hapus";
             this.deleteItem.Click += new System.EventHandler(this.deleteItem_Click);
+            // 
+            // saveAllItem
+            // 
+            this.saveAllItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.saveAllItem.Image = global::Muse.Properties.Resources.SaveIcon;
+            this.saveAllItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.saveAllItem.Name = "saveAllItem";
+            this.saveAllItem.Size = new System.Drawing.Size(106, 22);
+            this.saveAllItem.Text = "Simpan Semua";
+            this.saveAllItem.Click += new System.EventHandler(this.saveAllItem_Click);
             // 
             // FormAddBill
             // 
@@ -321,7 +321,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtProductName;
         private System.Windows.Forms.TextBox txtCustomerName;
-        public System.Windows.Forms.Button btnSave;
         public System.Windows.Forms.Button btnBrowseCustomer;
         public System.Windows.Forms.Button btnBrowseProduct;
         private System.Windows.Forms.DataGridView dgv;
@@ -331,5 +330,6 @@
         private System.Windows.Forms.ToolStripButton saveItem;
         private System.Windows.Forms.ToolStripButton editItem;
         private System.Windows.Forms.ToolStripButton deleteItem;
+        private System.Windows.Forms.ToolStripButton saveAllItem;
     }
 }

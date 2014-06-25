@@ -36,7 +36,7 @@ namespace Muse {
             base.OnLoad(e);
             dgv.AutoGenerateColumns = true;
             _db = new RestoContext();
-            _db.Database.Log = Console.Write;
+            //_db.Database.Log = Console.Write;
 
             if (!_isNew) {
                 txtCustomerCode.Text = _billToUpdate.CustomerId.ToString();
@@ -91,11 +91,6 @@ namespace Muse {
         private void btnBrowseProduct_Click(object sender, EventArgs e) {
             new FormListing(Contract.Product, assignProduct).ShowDialog();
             txtQuantity.Select();
-        }
-
-        private void btnSave_Click(object sender, EventArgs e) {
-            DialogResult = DialogResult.OK;
-            Close();
         }
 
         private void dgv_RowEnter(object sender, DataGridViewCellEventArgs e) {
@@ -183,6 +178,12 @@ namespace Muse {
                 editItem.Enabled = false;
                 deleteItem.Enabled = false;
             }
+        }
+
+        private void saveAllItem_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+            Close();
         }
 
         # endregion

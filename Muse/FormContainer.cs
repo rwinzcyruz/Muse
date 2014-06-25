@@ -26,7 +26,7 @@ namespace Muse
 
         private void FormContainer_Load(object sender, EventArgs e)
         {
-            //_Login();
+            _Login();
         }
 
         private void menuLogout_Click(object sender, EventArgs e)
