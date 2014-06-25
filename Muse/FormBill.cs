@@ -10,6 +10,7 @@ namespace Muse
     public partial class FormBill : Form
     {
         private RestoContext _db;
+        private int _rowIndex;
 
         public FormBill()
         {
@@ -22,9 +23,7 @@ namespace Muse
             dgv.AutoGenerateColumns = true;
             
             _db = new RestoContext();
-            _db.Bills.Where(x => x.Paid == false).OrderByDescending(x => x.UpdatedAt).Load();
-            bindingSource.DataSource = _db.Bills.Local.ToBindingList();
-            //bindingSource.DataSource = _db.Bills.Local.Select(x => new { x.Id, x.Customer.Name, x.Paid, x.Tax, x.CreatedAt, x.UpdatedAt }).ToList();
+            _Reload();
         }
 
         protected override void OnClosing(CancelEventArgs e)
@@ -33,33 +32,61 @@ namespace Muse
             this._db.Dispose();
         }
 
+        # region Event Handler
+
         private void btnCreateBill_Click(object sender, EventArgs e)
         {
             var result = new FormAddBill().ShowDialog();
-            //mUtilities.Validate(dgv.
+
             if (result == DialogResult.OK)
             {
-                _db.Bills.Load();
-                bindingSource.DataSource = _db.Bills.Local.Select(x => new { x.Id, x.Customer.Name, x.Paid, x.Tax, x.CreatedAt, x.UpdatedAt })
-                    .Where(x => x.Paid == false).OrderByDescending(x => x.UpdatedAt).ToList();
+                _Reload();
             }
         }
 
         private void btnUpdateBill_Click(object sender, EventArgs e)
         {
-            FormAddBill frmAddBill = new FormAddBill();
-            //var result = new FormAddBill().ShowDialog();
-            var result = frmAddBill.ShowDialog();
-            frmAddBill.btnAssignCustomer.Enabled = false;
-            frmAddBill.btnBrowseCustomer.Enabled = false;
-            frmAddBill.btnBrowseProduct.Enabled = false;
-            
-            if (result == DialogResult.OK)
-            {
-                _db.Bills.Load();
-                //bindingSource.DataSource = _db.Bills.Local.Select(x => new { x.Id, x.Customer.Name, x.Paid, x.Tax, x.CreatedAt, x.UpdatedAt })
-                //    .Where(x => x.Paid == false).OrderByDescending(x => x.UpdatedAt).ToList();
+            var id = int.Parse(dgv.Rows[_rowIndex].Cells["id"].Value.ToString());
+            _UpdateBill(id);
+        }
+
+        private void dgv_RowEnter(object sender, DataGridViewCellEventArgs e) {
+            _rowIndex = e.RowIndex;
+        }
+
+        private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
+            var id = int.Parse(dgv.Rows[e.RowIndex].Cells["id"].Value.ToString());
+            _UpdateBill(id);
+        }
+
+        private void btnDeleteBill_Click(object sender, EventArgs e) {
+            if (Utility.ConfirmDelete()) {
+                var id = int.Parse(dgv.Rows[_rowIndex].Cells["id"].Value.ToString());
+                _db.Bills.Remove(_db.Bills.Find(id));
+                _db.SaveChanges();
+                _Reload();
             }
         }
+
+        # endregion
+
+        # region Private Method
+
+        private void _UpdateBill(int id) {
+            var result = new FormAddBill(_db.Bills.Find(id)).ShowDialog();
+
+            if (result == DialogResult.OK) {
+                _Reload();
+            }
+        }
+
+        private void _Reload() {
+            _db.Bills.Where(x => x.Paid == false).Load();
+            bindingSource.DataSource = _db.Bills.Local
+                .Select(x => new { x.Id, x.Customer.Name, x.Paid, x.Tax, x.CreatedAt, x.UpdatedAt })
+                .OrderByDescending(x => x.UpdatedAt).ToList();
+        }
+
+        # endregion
     }
 }

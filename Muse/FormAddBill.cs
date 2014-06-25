@@ -1,106 +1,191 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
+using System.Data.Entity;
 using System.Windows.Forms;
 using Muse.Model;
+using System.Reflection;
 
-namespace Muse
-{
-    public partial class FormAddBill : Form
-    {   
-        public FormAddBill()
-        {
+namespace Muse {
+
+    public partial class FormAddBill : Form {
+
+        private RestoContext _db;
+        private Bill _billToUpdate;
+        private Order _orderToUpdate;
+        private bool _isNew = true;
+        private bool _isUpdate = false;
+        private int _rowIndex;
+
+        public FormAddBill() {
             InitializeComponent();
+            _Init();
+            editItem.Enabled = false;
+            deleteItem.Enabled = false;
+        }
+
+        public FormAddBill(Bill billToUpdate) {
+            InitializeComponent();
+            _billToUpdate = billToUpdate;
+            _isNew = false;
+            _Init();
+            btnBrowseCustomer.Enabled = false;
+        }
+
+        protected override void OnLoad(EventArgs e) {
+            base.OnLoad(e);
+            dgv.AutoGenerateColumns = true;
+            _db = new RestoContext();
+            _db.Database.Log = Console.Write;
+
+            if (!_isNew) {
+                txtCustomerCode.Text = _billToUpdate.CustomerId.ToString();
+                txtCustomerName.Text = _billToUpdate.Customer.Name;
+                _Reload();
+            }
+        }
+
+        protected override void OnClosing(CancelEventArgs e) {
+            base.OnClosing(e);
+            this._db.Dispose();
+        }
+
+        # region Private Method
+
+        private void _Init() {
             txtCustomerName.Enabled = false;
             txtCustomerCode.Enabled = false;
             txtProductName.Enabled = false;
             txtProductCode.Enabled = false;
         }
 
-        private void assignCustomer(string id, string name)
-        {
+        private void assignCustomer(string id, string name) {
             txtCustomerCode.Text = id;
             txtCustomerName.Text = name;
         }
 
-        private void assignProduct(string id, string name)
-        {
+        private void assignProduct(string id, string name) {
             txtProductCode.Text = id;
             txtProductName.Text = name;
         }
 
-        private void btnBrowseCustomer_Click(object sender, EventArgs e)
-        {
+        private void _Reload() {
+            _db.Bills.Where(x => x.Id == _billToUpdate.Id).Include(x => x.Orders.Select(o => o.Product)).Load();
+            bindingSource.DataSource = _db.Orders.Local.Select(x => new { x.ProductId, x.Product.Name, x.Product.Price, x.Total }).ToList();
+        }
+
+        private void _ClearForm() {
+            txtProductCode.Clear();
+            txtProductName.Clear();
+            txtQuantity.Clear();
+        }
+
+        # endregion
+
+        # region Event Handler
+
+        private void btnBrowseCustomer_Click(object sender, EventArgs e) {
             new FormListing(Contract.Customer, assignCustomer).ShowDialog();
         }
 
-        private void btnBrowseProduct_Click(object sender, EventArgs e)
-        {
+        private void btnBrowseProduct_Click(object sender, EventArgs e) {
             new FormListing(Contract.Product, assignProduct).ShowDialog();
+            txtQuantity.Select();
         }
 
-        private void btnAssignCustomer_Click(object sender, EventArgs e)
-        {
-            if (txtCustomerCode.Text != "")
-            {
-                var customerId = int.Parse(txtCustomerCode.Text);
-                var now = DateTime.Now;
+        private void btnSave_Click(object sender, EventArgs e) {
+            DialogResult = DialogResult.OK;
+            Close();
+        }
 
-                using (var db = new RestoContext())
-                {
-                    var bill = new Bill
-                    {
-                        CustomerId = customerId,
-                        Tax = 0,
-                        Paid = false,
-                        CreatedAt = now,
-                        UpdatedAt = now
-                    };
+        private void dgv_RowEnter(object sender, DataGridViewCellEventArgs e) {
+            _rowIndex = e.RowIndex;
+        }
 
-                    db.Bills.Add(bill);
-                    //db.SaveChanges();
-                }
-
-                btnAssignCustomer.Enabled = false;
-                DialogResult = DialogResult.OK;
+        private void saveItem_Click(object sender, EventArgs e) {
+            if (!Utility.RequiredCheck(errorProvider, txtCustomerCode, txtProductCode, txtQuantity)) {
+                return;
             }
-        }
 
-        private void FormAddBill_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnAddOrder_Click(object sender, EventArgs e)
-        {
-            var quatity = int.Parse(txtQuantity.Text);
+            var customerId = int.Parse(txtCustomerCode.Text);
+            var productId = int.Parse(txtProductCode.Text);
+            var quantity = int.Parse(txtQuantity.Text);
             var now = DateTime.Now;
-            var product = int.Parse(txtProductCode.Text);
-            using (var db = new RestoContext())
-            {
-                //db.Orders.Add(new Order
-                //{
-                //    Quantity = quatity,
-                //    CreatedAt = now,
-                //    UpdatedAt = now
-                //});
-                var order = new Order
-                {
-                    ProductId = product,
-                    Quantity = quatity,
+
+            if (_isNew) {
+                _billToUpdate = _db.Bills.Add(new Bill {
+                    CustomerId = customerId,
+                    Paid = false,
+                    Tax = 0.1,
                     CreatedAt = now,
                     UpdatedAt = now
-                };
-                db.Orders.Add(order);
-                db.SaveChanges();
+                });
+                _db.SaveChanges();
+                _isNew = false;
+                editItem.Enabled = true;
+                deleteItem.Enabled = true;
             }
-            //bindingSource.DataSource = _db.Bills.Local.Select(x => new { x.Id, x.Customer.Name, x.Paid, x.Tax, x.CreatedAt, x.UpdatedAt })
-            //    .Where(x => x.Paid == false).OrderByDescending(x => x.UpdatedAt).ToList();
-            //dataGridView1.DataSource = _db.Orders.Local.Select(x => new { x.
+
+            if (_isUpdate) {
+                _orderToUpdate.Quantity = quantity;
+                _db.SaveChanges();
+                _Reload();
+                _isUpdate = false;
+                _ClearForm();
+            } else {
+                var query = _billToUpdate.Orders.Where(x => x.ProductId == productId).SingleOrDefault();
+                if (query == null) {
+                    _billToUpdate.Orders.Add(new Order {
+                        ProductId = productId,
+                        Quantity = quantity,
+                        CreatedAt = now,
+                        UpdatedAt = now
+                    });
+                    _db.SaveChanges();
+                    _Reload();
+                } else {
+                    MessageBox.Show("Menu makanan telah ditambahkan ke pesanan sebelumnya");
+                }
+            }
+
+            deleteItem.Enabled = true;
+            editItem.Enabled = true;
+            btnBrowseProduct.Enabled = true;
+            _ClearForm();
         }
+
+        private void editItem_Click(object sender, EventArgs e) {
+            editItem.Enabled = false;
+            deleteItem.Enabled = false;
+            btnBrowseProduct.Enabled = false;
+
+            var id = int.Parse(dgv.Rows[_rowIndex].Cells["ProductId"].Value.ToString());
+            var orderToUpdate = _db.Orders.Local.Where(x => x.ProductId == id).Single();
+            txtProductCode.Text = orderToUpdate.ProductId.ToString();
+            txtProductName.Text = orderToUpdate.Product.Name;
+            txtQuantity.Text = orderToUpdate.Quantity.ToString();
+
+            _orderToUpdate = orderToUpdate;
+            _isUpdate = true;
+            txtQuantity.Select();
+        }
+
+        private void deleteItem_Click(object sender, EventArgs e) {
+            if (Utility.ConfirmDelete()) {
+                var id = int.Parse(dgv.Rows[_rowIndex].Cells["ProductId"].Value.ToString());
+                var orderToDelete = _db.Orders.Local.Where(x => x.ProductId == id).Single();
+                _db.Orders.Remove(orderToDelete);
+                _db.SaveChanges();
+                _Reload();
+            }
+
+            if (dgv.Rows.Count == 0) {
+                editItem.Enabled = false;
+                deleteItem.Enabled = false;
+            }
+        }
+
+        # endregion
     }
+
 }

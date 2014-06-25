@@ -15,6 +15,8 @@ namespace Muse.Model
         [Required]
         public int Quantity { get; set; }
 
+        public int Total { get { return Product.Price * Quantity; } }
+
         [Required]
         public DateTime CreatedAt { get; set; }
 

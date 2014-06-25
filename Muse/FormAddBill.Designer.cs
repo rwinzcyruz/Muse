@@ -34,23 +34,30 @@
             this.txtProductCode = new System.Windows.Forms.MaskedTextBox();
             this.txtQuantity = new System.Windows.Forms.MaskedTextBox();
             this.btnBrowseProduct = new System.Windows.Forms.Button();
-            this.btnAddOrder = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnAssignCustomer = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.btnBrowseCustomer = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.txtCustomerCode = new System.Windows.Forms.MaskedTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtCustomerName = new System.Windows.Forms.TextBox();
+            this.dgv = new System.Windows.Forms.DataGridView();
             this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.bindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.saveItem = new System.Windows.Forms.ToolStripButton();
+            this.editItem = new System.Windows.Forms.ToolStripButton();
+            this.deleteItem = new System.Windows.Forms.ToolStripButton();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator)).BeginInit();
+            this.bindingNavigator.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -59,7 +66,7 @@
             this.groupBox1.Controls.Add(this.txtProductCode);
             this.groupBox1.Controls.Add(this.txtQuantity);
             this.groupBox1.Controls.Add(this.btnBrowseProduct);
-            this.groupBox1.Controls.Add(this.btnAddOrder);
+            this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
@@ -72,14 +79,14 @@
             // 
             // txtProductName
             // 
-            this.txtProductName.Location = new System.Drawing.Point(265, 25);
+            this.txtProductName.Location = new System.Drawing.Point(330, 25);
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.Size = new System.Drawing.Size(100, 20);
             this.txtProductName.TabIndex = 7;
             // 
             // txtProductCode
             // 
-            this.txtProductCode.Location = new System.Drawing.Point(81, 25);
+            this.txtProductCode.Location = new System.Drawing.Point(98, 25);
             this.txtProductCode.Mask = "00000";
             this.txtProductCode.Name = "txtProductCode";
             this.txtProductCode.Size = new System.Drawing.Size(100, 20);
@@ -88,7 +95,7 @@
             // 
             // txtQuantity
             // 
-            this.txtQuantity.Location = new System.Drawing.Point(81, 51);
+            this.txtQuantity.Location = new System.Drawing.Point(98, 51);
             this.txtQuantity.Mask = "00000";
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(100, 20);
@@ -97,7 +104,7 @@
             // 
             // btnBrowseProduct
             // 
-            this.btnBrowseProduct.Location = new System.Drawing.Point(371, 23);
+            this.btnBrowseProduct.Location = new System.Drawing.Point(436, 23);
             this.btnBrowseProduct.Name = "btnBrowseProduct";
             this.btnBrowseProduct.Size = new System.Drawing.Size(34, 23);
             this.btnBrowseProduct.TabIndex = 3;
@@ -105,15 +112,15 @@
             this.btnBrowseProduct.UseVisualStyleBackColor = true;
             this.btnBrowseProduct.Click += new System.EventHandler(this.btnBrowseProduct_Click);
             // 
-            // btnAddOrder
+            // btnSave
             // 
-            this.btnAddOrder.Location = new System.Drawing.Point(187, 49);
-            this.btnAddOrder.Name = "btnAddOrder";
-            this.btnAddOrder.Size = new System.Drawing.Size(75, 23);
-            this.btnAddOrder.TabIndex = 2;
-            this.btnAddOrder.Text = "Simpan";
-            this.btnAddOrder.UseVisualStyleBackColor = true;
-            this.btnAddOrder.Click += new System.EventHandler(this.btnAddOrder_Click);
+            this.btnSave.Location = new System.Drawing.Point(806, 59);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(108, 23);
+            this.btnSave.TabIndex = 2;
+            this.btnSave.Text = "Simpan Semua";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label3
             // 
@@ -127,7 +134,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(187, 28);
+            this.label2.Location = new System.Drawing.Point(235, 28);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 13);
             this.label2.TabIndex = 0;
@@ -142,27 +149,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Kode Produk";
             // 
-            // btnAssignCustomer
-            // 
-            this.btnAssignCustomer.Location = new System.Drawing.Point(839, 24);
-            this.btnAssignCustomer.Name = "btnAssignCustomer";
-            this.btnAssignCustomer.Size = new System.Drawing.Size(75, 23);
-            this.btnAssignCustomer.TabIndex = 2;
-            this.btnAssignCustomer.Text = "Simpan";
-            this.btnAssignCustomer.UseVisualStyleBackColor = true;
-            this.btnAssignCustomer.Click += new System.EventHandler(this.btnAssignCustomer_Click);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 178);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(920, 311);
-            this.dataGridView1.TabIndex = 1;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -174,7 +160,7 @@
             // 
             // btnBrowseCustomer
             // 
-            this.btnBrowseCustomer.Location = new System.Drawing.Point(405, 22);
+            this.btnBrowseCustomer.Location = new System.Drawing.Point(436, 22);
             this.btnBrowseCustomer.Name = "btnBrowseCustomer";
             this.btnBrowseCustomer.Size = new System.Drawing.Size(34, 23);
             this.btnBrowseCustomer.TabIndex = 3;
@@ -185,7 +171,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(204, 27);
+            this.label5.Location = new System.Drawing.Point(235, 27);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(89, 13);
             this.label5.TabIndex = 0;
@@ -206,7 +192,6 @@
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.txtCustomerCode);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.btnAssignCustomer);
             this.groupBox2.Controls.Add(this.btnBrowseCustomer);
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
@@ -217,35 +202,102 @@
             // 
             // txtCustomerName
             // 
-            this.txtCustomerName.Location = new System.Drawing.Point(299, 24);
+            this.txtCustomerName.Location = new System.Drawing.Point(330, 24);
             this.txtCustomerName.Name = "txtCustomerName";
             this.txtCustomerName.Size = new System.Drawing.Size(100, 20);
             this.txtCustomerName.TabIndex = 7;
             // 
-            // bindingSource
+            // dgv
             // 
-            this.bindingSource.DataSource = typeof(Muse.Model.Bill);
+            this.dgv.AllowUserToAddRows = false;
+            this.dgv.AutoGenerateColumns = false;
+            this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv.DataSource = this.bindingSource;
+            this.dgv.Location = new System.Drawing.Point(12, 178);
+            this.dgv.Name = "dgv";
+            this.dgv.ReadOnly = true;
+            this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv.Size = new System.Drawing.Size(920, 296);
+            this.dgv.TabIndex = 7;
+            this.dgv.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_RowEnter);
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
+            // bindingNavigator
+            // 
+            this.bindingNavigator.AddNewItem = null;
+            this.bindingNavigator.CountItem = null;
+            this.bindingNavigator.DeleteItem = null;
+            this.bindingNavigator.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.bindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveItem,
+            this.editItem,
+            this.deleteItem});
+            this.bindingNavigator.Location = new System.Drawing.Point(0, 477);
+            this.bindingNavigator.MoveFirstItem = null;
+            this.bindingNavigator.MoveLastItem = null;
+            this.bindingNavigator.MoveNextItem = null;
+            this.bindingNavigator.MovePreviousItem = null;
+            this.bindingNavigator.Name = "bindingNavigator";
+            this.bindingNavigator.PositionItem = null;
+            this.bindingNavigator.Size = new System.Drawing.Size(952, 25);
+            this.bindingNavigator.TabIndex = 8;
+            this.bindingNavigator.Text = "bindingNavigator1";
+            // 
+            // saveItem
+            // 
+            this.saveItem.Image = global::Muse.Properties.Resources.SaveIcon;
+            this.saveItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.saveItem.Name = "saveItem";
+            this.saveItem.Size = new System.Drawing.Size(51, 22);
+            this.saveItem.Text = "Save";
+            this.saveItem.Click += new System.EventHandler(this.saveItem_Click);
+            // 
+            // editItem
+            // 
+            this.editItem.Image = global::Muse.Properties.Resources.EditIcon;
+            this.editItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.editItem.Name = "editItem";
+            this.editItem.Size = new System.Drawing.Size(47, 22);
+            this.editItem.Text = "Edit";
+            this.editItem.Click += new System.EventHandler(this.editItem_Click);
+            // 
+            // deleteItem
+            // 
+            this.deleteItem.Image = global::Muse.Properties.Resources.DeleteIcon;
+            this.deleteItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.deleteItem.Name = "deleteItem";
+            this.deleteItem.Size = new System.Drawing.Size(60, 22);
+            this.deleteItem.Text = "Delete";
+            this.deleteItem.Click += new System.EventHandler(this.deleteItem_Click);
             // 
             // FormAddBill
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(944, 502);
+            this.ClientSize = new System.Drawing.Size(952, 502);
+            this.Controls.Add(this.bindingNavigator);
+            this.Controls.Add(this.dgv);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
             this.MinimumSize = new System.Drawing.Size(960, 540);
             this.Name = "FormAddBill";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Form Tambah Pesanan";
-            this.Load += new System.EventHandler(this.FormAddBill_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator)).EndInit();
+            this.bindingNavigator.ResumeLayout(false);
+            this.bindingNavigator.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -255,19 +307,23 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.MaskedTextBox txtProductCode;
         private System.Windows.Forms.MaskedTextBox txtQuantity;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.MaskedTextBox txtCustomerCode;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btnAddOrder;
         private System.Windows.Forms.TextBox txtProductName;
         private System.Windows.Forms.TextBox txtCustomerName;
-        private System.Windows.Forms.BindingSource bindingSource;
-        public System.Windows.Forms.Button btnAssignCustomer;
+        public System.Windows.Forms.Button btnSave;
         public System.Windows.Forms.Button btnBrowseCustomer;
         public System.Windows.Forms.Button btnBrowseProduct;
+        private System.Windows.Forms.DataGridView dgv;
+        private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.BindingSource bindingSource;
+        private System.Windows.Forms.BindingNavigator bindingNavigator;
+        private System.Windows.Forms.ToolStripButton saveItem;
+        private System.Windows.Forms.ToolStripButton editItem;
+        private System.Windows.Forms.ToolStripButton deleteItem;
     }
 }

@@ -139,7 +139,7 @@ namespace Muse
             switch (_contract)
             {
                 case Contract.Customer:
-                    res = MessageBox.Show("Yakin hapus data pelanggan ini?","Hapus",MessageBoxButtons.YesNo,
+                    res = MessageBox.Show("Yakin hapus data pelanggan ini?", "Hapus", MessageBoxButtons.YesNo,
                           MessageBoxIcon.Question,MessageBoxDefaultButton.Button2);
                     if (res == DialogResult.OK)
                     {

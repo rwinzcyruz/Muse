@@ -22,7 +22,7 @@ namespace Muse
             InitializeComponent();
         }
 
-        # region event handler
+        # region Event Handler
 
         private void FormContainer_Load(object sender, EventArgs e)
         {
@@ -78,7 +78,7 @@ namespace Muse
 
         # endregion
 
-        # region private method
+        # region Private Method
 
         private void _Init()
         {
