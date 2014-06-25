@@ -19,6 +19,10 @@ namespace Muse
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            if (!Utility.RequiredCheck(errorProvider, txtUsername, txtPassword, txtConfirm)) {
+                return;
+            }
+            
             var username = txtUsername.Text.Trim();
             var password = txtPassword.Text.Trim();
             var confirm = txtConfirm.Text.Trim();

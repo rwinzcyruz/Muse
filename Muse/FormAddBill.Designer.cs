@@ -62,6 +62,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.txtProductName);
             this.groupBox1.Controls.Add(this.txtProductCode);
             this.groupBox1.Controls.Add(this.txtQuantity);
@@ -188,6 +190,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.txtCustomerName);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.txtCustomerCode);
@@ -210,6 +214,9 @@
             // dgv
             // 
             this.dgv.AllowUserToAddRows = false;
+            this.dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv.AutoGenerateColumns = false;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.DataSource = this.bindingSource;
@@ -217,7 +224,7 @@
             this.dgv.Name = "dgv";
             this.dgv.ReadOnly = true;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(920, 296);
+            this.dgv.Size = new System.Drawing.Size(920, 312);
             this.dgv.TabIndex = 7;
             this.dgv.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_RowEnter);
             // 
@@ -230,12 +237,11 @@
             this.bindingNavigator.AddNewItem = null;
             this.bindingNavigator.CountItem = null;
             this.bindingNavigator.DeleteItem = null;
-            this.bindingNavigator.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.bindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.saveItem,
             this.editItem,
             this.deleteItem});
-            this.bindingNavigator.Location = new System.Drawing.Point(0, 477);
+            this.bindingNavigator.Location = new System.Drawing.Point(0, 0);
             this.bindingNavigator.MoveFirstItem = null;
             this.bindingNavigator.MoveLastItem = null;
             this.bindingNavigator.MoveNextItem = null;
@@ -251,8 +257,8 @@
             this.saveItem.Image = global::Muse.Properties.Resources.SaveIcon;
             this.saveItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveItem.Name = "saveItem";
-            this.saveItem.Size = new System.Drawing.Size(51, 22);
-            this.saveItem.Text = "Save";
+            this.saveItem.Size = new System.Drawing.Size(67, 22);
+            this.saveItem.Text = "Simpan";
             this.saveItem.Click += new System.EventHandler(this.saveItem_Click);
             // 
             // editItem
@@ -260,8 +266,8 @@
             this.editItem.Image = global::Muse.Properties.Resources.EditIcon;
             this.editItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.editItem.Name = "editItem";
-            this.editItem.Size = new System.Drawing.Size(47, 22);
-            this.editItem.Text = "Edit";
+            this.editItem.Size = new System.Drawing.Size(68, 22);
+            this.editItem.Text = "Sunting";
             this.editItem.Click += new System.EventHandler(this.editItem_Click);
             // 
             // deleteItem
@@ -269,8 +275,8 @@
             this.deleteItem.Image = global::Muse.Properties.Resources.DeleteIcon;
             this.deleteItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.deleteItem.Name = "deleteItem";
-            this.deleteItem.Size = new System.Drawing.Size(60, 22);
-            this.deleteItem.Text = "Delete";
+            this.deleteItem.Size = new System.Drawing.Size(61, 22);
+            this.deleteItem.Text = "Hapus";
             this.deleteItem.Click += new System.EventHandler(this.deleteItem_Click);
             // 
             // FormAddBill
