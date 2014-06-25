@@ -141,7 +141,7 @@ namespace Muse
                 case Contract.Customer:
                     res = MessageBox.Show("Yakin hapus data pelanggan ini?", "Hapus", MessageBoxButtons.YesNo,
                           MessageBoxIcon.Question,MessageBoxDefaultButton.Button2);
-                    if (res == DialogResult.OK)
+                    if (res == DialogResult.Yes)
                     {
                         var dropCustomer = _db.Customers.SingleOrDefault(x => x.Id == id);
                         if (dropCustomer != null)
@@ -153,7 +153,7 @@ namespace Muse
                 case Contract.Product:
                     res = MessageBox.Show("Yakin hapus data produk ini?", "Hapus", MessageBoxButtons.YesNo,
                           MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-                    if (res == DialogResult.OK)
+                    if (res == DialogResult.Yes)
                     {
                         var dropProduct = _db.Products.SingleOrDefault(x => x.Id == id);
                         if (dropProduct != null)
@@ -165,7 +165,7 @@ namespace Muse
                 case Contract.User:
                     res = MessageBox.Show("Yakin hapus data user ini?", "Hapus", MessageBoxButtons.YesNo,
                           MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-                    if (res == DialogResult.OK)
+                    if (res == DialogResult.Yes)
                     {
                         var dropUsers = _db.Users.SingleOrDefault(x => x.Id == id);
                         if (dropUsers != null)

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblNama = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.lblUsername = new System.Windows.Forms.Label();
@@ -42,12 +43,14 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtPhone = new System.Windows.Forms.MaskedTextBox();
             this.pnlGender = new System.Windows.Forms.Panel();
             this.rdoFemale = new System.Windows.Forms.RadioButton();
             this.rdoMale = new System.Windows.Forms.RadioButton();
-            this.txtPhone = new System.Windows.Forms.MaskedTextBox();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             this.pnlGender.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // lblNama
@@ -64,7 +67,7 @@
             this.txtName.Location = new System.Drawing.Point(104, 29);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(159, 20);
-            this.txtName.TabIndex = 2;
+            this.txtName.TabIndex = 0;
             // 
             // lblUsername
             // 
@@ -80,7 +83,7 @@
             this.txtUsername.Location = new System.Drawing.Point(103, 58);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(159, 20);
-            this.txtUsername.TabIndex = 4;
+            this.txtUsername.TabIndex = 1;
             // 
             // lblPassword
             // 
@@ -97,7 +100,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(159, 20);
-            this.txtPassword.TabIndex = 6;
+            this.txtPassword.TabIndex = 2;
             // 
             // lblGender
             // 
@@ -122,7 +125,7 @@
             this.txtAddress.Location = new System.Drawing.Point(103, 151);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(159, 20);
-            this.txtAddress.TabIndex = 10;
+            this.txtAddress.TabIndex = 3;
             // 
             // lblPhone
             // 
@@ -147,14 +150,14 @@
             this.txtEmail.Location = new System.Drawing.Point(104, 214);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(158, 20);
-            this.txtEmail.TabIndex = 14;
+            this.txtEmail.TabIndex = 5;
             // 
             // btnSave
             // 
             this.btnSave.Location = new System.Drawing.Point(188, 241);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 15;
+            this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Simpan";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnAdd_Click);
@@ -182,6 +185,14 @@
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tambah Pengguna";
+            // 
+            // txtPhone
+            // 
+            this.txtPhone.Location = new System.Drawing.Point(104, 183);
+            this.txtPhone.Mask = "0000 0000 0000";
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(158, 20);
+            this.txtPhone.TabIndex = 4;
             // 
             // pnlGender
             // 
@@ -214,13 +225,9 @@
             this.rdoMale.Text = "Pria";
             this.rdoMale.UseVisualStyleBackColor = true;
             // 
-            // txtPhone
+            // errorProvider
             // 
-            this.txtPhone.Location = new System.Drawing.Point(104, 183);
-            this.txtPhone.Mask = "0000 0000 0000";
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(158, 20);
-            this.txtPhone.TabIndex = 17;
+            this.errorProvider.ContainerControl = this;
             // 
             // FormAddUser
             // 
@@ -234,6 +241,7 @@
             this.groupBox1.PerformLayout();
             this.pnlGender.ResumeLayout(false);
             this.pnlGender.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -258,5 +266,6 @@
         private System.Windows.Forms.RadioButton rdoFemale;
         private System.Windows.Forms.RadioButton rdoMale;
         private System.Windows.Forms.MaskedTextBox txtPhone;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

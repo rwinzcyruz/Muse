@@ -73,7 +73,7 @@ namespace Muse
         # region Private Method
 
         private void _UpdateBill(int id) {
-            var result = new FormAddBill(_db.Bills.Find(id)).ShowDialog();
+            var result = new FormAddBill(id).ShowDialog();
 
             if (result == DialogResult.OK) {
                 _Reload();

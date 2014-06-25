@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtPrice = new System.Windows.Forms.MaskedTextBox();
             this.btnSave = new System.Windows.Forms.Button();
@@ -36,7 +37,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -60,15 +63,15 @@
             this.txtPrice.Location = new System.Drawing.Point(80, 61);
             this.txtPrice.Mask = "00000000000000";
             this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(174, 20);
-            this.txtPrice.TabIndex = 3;
+            this.txtPrice.Size = new System.Drawing.Size(163, 20);
+            this.txtPrice.TabIndex = 1;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(179, 140);
+            this.btnSave.Location = new System.Drawing.Point(168, 143);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 2;
+            this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Simpan";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -77,15 +80,15 @@
             // 
             this.txtDesc.Location = new System.Drawing.Point(80, 100);
             this.txtDesc.Name = "txtDesc";
-            this.txtDesc.Size = new System.Drawing.Size(174, 20);
-            this.txtDesc.TabIndex = 1;
+            this.txtDesc.Size = new System.Drawing.Size(163, 20);
+            this.txtDesc.TabIndex = 2;
             // 
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(80, 25);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(174, 20);
-            this.txtName.TabIndex = 1;
+            this.txtName.Size = new System.Drawing.Size(163, 20);
+            this.txtName.TabIndex = 0;
             // 
             // label4
             // 
@@ -114,6 +117,10 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Nama";
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // FormAddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -124,6 +131,7 @@
             this.Text = "Form Tambah Produk";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -138,5 +146,6 @@
         private System.Windows.Forms.TextBox txtDesc;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.MaskedTextBox txtPrice;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

@@ -16,6 +16,7 @@ namespace Muse {
         private bool _isNew = true;
         private bool _isUpdate = false;
         private int _rowIndex;
+        private int _toUpdateId;
 
         public FormAddBill() {
             InitializeComponent();
@@ -24,9 +25,9 @@ namespace Muse {
             deleteItem.Enabled = false;
         }
 
-        public FormAddBill(Bill billToUpdate) {
+        public FormAddBill(int id) {
             InitializeComponent();
-            _billToUpdate = billToUpdate;
+            _toUpdateId = id;
             _isNew = false;
             _Init();
             btnBrowseCustomer.Enabled = false;
@@ -39,9 +40,10 @@ namespace Muse {
             //_db.Database.Log = Console.Write;
 
             if (!_isNew) {
+                _billToUpdate = _db.Bills.Find(_toUpdateId);
+                _Reload();
                 txtCustomerCode.Text = _billToUpdate.CustomerId.ToString();
                 txtCustomerName.Text = _billToUpdate.Customer.Name;
-                _Reload();
             }
         }
 

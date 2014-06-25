@@ -61,6 +61,11 @@ namespace Muse
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (!Utility.RequiredCheck(errorProvider, txtName))
+            {
+                return;
+            }
+
             var name = txtName.Text.Trim();
             var email = txtEmail.Text.Trim();
             var address = txtAddress.Text.Trim();

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnSave = new System.Windows.Forms.Button();
             this.lblName = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
@@ -42,8 +43,10 @@
             this.pnlGender = new System.Windows.Forms.Panel();
             this.rdoFemale = new System.Windows.Forms.RadioButton();
             this.rdoMale = new System.Windows.Forms.RadioButton();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             this.pnlGender.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSave
@@ -52,7 +55,7 @@
             this.btnSave.Location = new System.Drawing.Point(174, 181);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 11;
+            this.btnSave.TabIndex = 4;
             this.btnSave.Text = "Simpan";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -72,7 +75,7 @@
             this.txtName.Location = new System.Drawing.Point(96, 27);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(153, 20);
-            this.txtName.TabIndex = 2;
+            this.txtName.TabIndex = 0;
             // 
             // lblAddress
             // 
@@ -88,7 +91,7 @@
             this.txtAddress.Location = new System.Drawing.Point(97, 91);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(152, 20);
-            this.txtAddress.TabIndex = 6;
+            this.txtAddress.TabIndex = 1;
             // 
             // lblPhone
             // 
@@ -104,7 +107,7 @@
             this.txtPhone.Location = new System.Drawing.Point(97, 125);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(152, 20);
-            this.txtPhone.TabIndex = 8;
+            this.txtPhone.TabIndex = 2;
             // 
             // lblGender
             // 
@@ -129,7 +132,7 @@
             this.txtEmail.Location = new System.Drawing.Point(97, 155);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(152, 20);
-            this.txtEmail.TabIndex = 10;
+            this.txtEmail.TabIndex = 3;
             // 
             // groupBox1
             // 
@@ -182,6 +185,10 @@
             this.rdoMale.Text = "Pria";
             this.rdoMale.UseVisualStyleBackColor = true;
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // FormAddCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -194,6 +201,7 @@
             this.groupBox1.PerformLayout();
             this.pnlGender.ResumeLayout(false);
             this.pnlGender.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -214,6 +222,7 @@
         private System.Windows.Forms.Panel pnlGender;
         private System.Windows.Forms.RadioButton rdoFemale;
         private System.Windows.Forms.RadioButton rdoMale;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }
 

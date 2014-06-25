@@ -36,6 +36,11 @@ namespace Muse
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if (Utility.RequiredCheck(errorProvider, txtName, txtUsername, txtPassword, txtEmail))
+            {
+                return;
+            }
+            
             var name = txtName.Text.Trim();
             var username = txtUsername.Text.Trim();
             var password = txtPassword.Text;
