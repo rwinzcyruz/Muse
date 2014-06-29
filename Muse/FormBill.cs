@@ -1,4 +1,5 @@
 ﻿using Muse.Model;
+using Muse.ViewModel;
 using System;
 using System.ComponentModel;
 using System.Data.Entity;
@@ -17,7 +18,8 @@ namespace Muse {
 
         protected override void OnLoad(EventArgs e) {
             base.OnLoad(e);
-            dgv.AutoGenerateColumns = true;
+            dgvUnpaid.AutoGenerateColumns = true;
+            dgvPaid.AutoGenerateColumns = true;
 
             _db = new RestoContext();
             _Reload();
@@ -35,12 +37,12 @@ namespace Muse {
 
             if (result == DialogResult.OK) {
                 _Reload();
-                dgv.Refresh();
+                dgvUnpaid.Refresh();
             }
         }
 
         private void btnUpdateBill_Click(object sender, EventArgs e) {
-            var id = int.Parse(dgv.Rows[_rowIndex].Cells["id"].Value.ToString());
+            var id = int.Parse(dgvUnpaid.Rows[_rowIndex].Cells["BillId"].Value.ToString());
             _UpdateBill(id);
         }
 
@@ -49,13 +51,13 @@ namespace Muse {
         }
 
         private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
-            var id = int.Parse(dgv.Rows[e.RowIndex].Cells["id"].Value.ToString());
+            var id = int.Parse(dgvUnpaid.Rows[e.RowIndex].Cells["BillId"].Value.ToString());
             _UpdateBill(id);
         }
 
         private void btnDeleteBill_Click(object sender, EventArgs e) {
             if (Utility.ConfirmDelete()) {
-                var id = int.Parse(dgv.Rows[_rowIndex].Cells["id"].Value.ToString());
+                var id = int.Parse(dgvUnpaid.Rows[_rowIndex].Cells["BillId"].Value.ToString());
                 _db.Bills.Remove(_db.Bills.Find(id));
                 _db.SaveChanges();
                 _Reload();
@@ -75,11 +77,28 @@ namespace Muse {
         }
 
         private void _Reload() {
-            _db.Bills.Where(x => x.Paid == false).Load();
-            bindingSource.DataSource = _db.Bills.Local
-                .Select(x => new { x.Id, x.Customer.Name, x.Paid, x.Total, x.TaxFee, x.TotalFee, x.CreatedAt, x.UpdatedAt })
-                .OrderByDescending(x => x.UpdatedAt).ToList();
-            dgv.Refresh();
+            _db.Bills.Load();
+            unpaidBindingSource.DataSource = (from x in _db.Bills.Local
+                                              where x.Paid == false
+                                              orderby x.UpdatedAt descending
+                                              select new BillViewModel { 
+                                                  BillId = x.Id,
+                                                  CustomerName = x.Customer.Name,
+                                                  Total = x.Total,
+                                                  TaxFee = x.TaxFee,
+                                                  TotalFee = x.TotalFee
+                                              }).ToList();
+            paidBindingSource.DataSource = (from x in _db.Bills.Local
+                                            where x.Paid == true
+                                            orderby x.UpdatedAt descending
+                                            select new BillViewModel {
+                                                BillId = x.Id,
+                                                CustomerName = x.Customer.Name,
+                                                Total = x.Total,
+                                                TaxFee = x.TaxFee,
+                                                TotalFee = x.TotalFee
+                                            }).ToList();
+            dgvUnpaid.Refresh();
         }
 
         # endregion
