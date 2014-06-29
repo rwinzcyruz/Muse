@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Muse.Model
-{
-    public class Bill
-    {
+namespace Muse.Model {
+
+    public class Bill {
         private readonly ObservableListSource<Order> _orders = new ObservableListSource<Order>();
 
         public int Id { get; set; }
@@ -30,8 +28,8 @@ namespace Muse.Model
         }
 
         public int TaxFee { get { return Convert.ToInt32(Tax * Total); } }
-        
-        public int TotalFee { get {return Total + TaxFee; } }
+
+        public int TotalFee { get { return Total + TaxFee; } }
 
         [Required]
         public DateTime CreatedAt { get; set; }

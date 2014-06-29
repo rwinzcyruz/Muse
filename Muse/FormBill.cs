@@ -5,48 +5,41 @@ using System.Data.Entity;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Muse
-{
-    public partial class FormBill : Form
-    {
+namespace Muse {
+
+    public partial class FormBill : Form {
         private RestoContext _db;
         private int _rowIndex;
 
-        public FormBill()
-        {
+        public FormBill() {
             InitializeComponent();
         }
 
-        protected override void OnLoad(EventArgs e)
-        {
+        protected override void OnLoad(EventArgs e) {
             base.OnLoad(e);
             dgv.AutoGenerateColumns = true;
-            
+
             _db = new RestoContext();
             _Reload();
         }
 
-        protected override void OnClosing(CancelEventArgs e)
-        {
+        protected override void OnClosing(CancelEventArgs e) {
             base.OnClosing(e);
             this._db.Dispose();
         }
 
         # region Event Handler
 
-        private void btnCreateBill_Click(object sender, EventArgs e)
-        {
+        private void btnCreateBill_Click(object sender, EventArgs e) {
             var result = new FormAddBill().ShowDialog();
 
-            if (result == DialogResult.OK)
-            {
+            if (result == DialogResult.OK) {
                 _Reload();
                 dgv.Refresh();
             }
         }
 
-        private void btnUpdateBill_Click(object sender, EventArgs e)
-        {
+        private void btnUpdateBill_Click(object sender, EventArgs e) {
             var id = int.Parse(dgv.Rows[_rowIndex].Cells["id"].Value.ToString());
             _UpdateBill(id);
         }

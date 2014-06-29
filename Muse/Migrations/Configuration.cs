@@ -1,19 +1,17 @@
-namespace Muse.Migrations
-{
+namespace Muse.Migrations {
+
     using Muse.Model;
     using System;
     using System.Collections.Generic;
     using System.Data.Entity.Migrations;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<RestoContext>
-    {
-        public Configuration()
-        {
+    internal sealed class Configuration : DbMigrationsConfiguration<RestoContext> {
+
+        public Configuration() {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(RestoContext context)
-        {
+        protected override void Seed(RestoContext context) {
             var now = DateTime.Now;
             var rand = new Random();
             var genders = Enum.GetValues(typeof(Gender));
@@ -26,25 +24,21 @@ namespace Muse.Migrations
             var orders = new List<Order>();
 
             var accounts = new[] { "Admin", "User" };
-            var names = new[]
-            {
+            var names = new[] {
                 "Jackson", "Aiden", "Liam", "Lucas", "Noah", "Mason", "Jayden", "Ethan", "Jacob", "Jack",
                 "Caden", "Logan", "Benjamin", "Michael", "Caleb", "Sophia", "Emma", "Olivia", "Isabella", "Mia",
                 "Ava", "Lily", "Zoe", "Emily", "Chloe", "Layla", "Madison", "Madelyn", "Abigail", "Aubrey"
             };
             var menus = new[] { "Nasi Goreng Ayam", "Soto Medan", "Sate Padang Special", "Lontong Sayur", "Pecel Lele", "Nasi Kangkung Belacan" };
-            var addresses = new[]
-            {
+            var addresses = new[] {
                 "Wahidin", "Gatot Subroto", "Yos Sudarso", "Asia", "Thamrin", "Aksara", "Guru Patimpus", "Bakaran Batu", "Krakatau", "Sutomo",
                 "Iskandar Muda", "Jamin Ginting", "Katamso", "Yos Rizal", "Sudirman", "Multatuli", "Diponegoro", "Gajah Mada", "Irian Barat", "Pemuda"
             };
 
             i = 0;
-            foreach (var account in accounts)
-            {
+            foreach (var account in accounts) {
                 var lower = account.ToLower();
-                users.Add(new User
-                {
+                users.Add(new User {
                     Id = ++i,
                     Name = account,
                     Email = lower + "@muse.com",
@@ -59,10 +53,8 @@ namespace Muse.Migrations
             }
 
             i = 0;
-            foreach (var menu in menus)
-            {
-                products.Add(new Product
-                {
+            foreach (var menu in menus) {
+                products.Add(new Product {
                     Id = ++i,
                     Name = menu,
                     Description = menu,
@@ -73,10 +65,8 @@ namespace Muse.Migrations
             }
 
             i = 0;
-            foreach (var name in names)
-            {
-                customers.Add(new Customer
-                {
+            foreach (var name in names) {
+                customers.Add(new Customer {
                     Id = ++i,
                     Name = name,
                     Email = name.ToLower() + "@gmail.com",
@@ -89,10 +79,8 @@ namespace Muse.Migrations
             }
 
             i = 0;
-            customers.ForEach(customer =>
-            {
-                bills.Add(new Bill
-                {
+            customers.ForEach(customer => {
+                bills.Add(new Bill {
                     Id = ++i,
                     CustomerId = customer.Id,
                     Paid = rand.NextDouble() < 0.5,
@@ -102,10 +90,8 @@ namespace Muse.Migrations
                 });
             });
 
-            bills.ForEach(bill =>
-            {
-                orders.Add(new Order
-                {
+            bills.ForEach(bill => {
+                orders.Add(new Order {
                     BillId = bill.Id,
                     ProductId = products[rand.Next(products.Count)].Id,
                     Quantity = rand.Next(1, 10),

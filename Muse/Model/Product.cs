@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Muse.Model
-{
-    public class Product
-    {
+namespace Muse.Model {
+
+    public class Product {
         private readonly ObservableListSource<Order> _orders = new ObservableListSource<Order>();
 
         public int Id { get; set; }

@@ -1,7 +1,6 @@
-﻿namespace Muse
-{
-    public enum Contract : byte
-    {
+﻿namespace Muse {
+
+    public enum Contract : byte {
         Customer,
         User,
         Bill,
@@ -9,8 +8,7 @@
         Product
     }
 
-    public enum Gender : byte
-    {
+    public enum Gender : byte {
         Female,
         Male,
         Unknown

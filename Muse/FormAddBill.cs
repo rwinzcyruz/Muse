@@ -1,15 +1,13 @@
-﻿using System;
+﻿using Muse.Model;
+using System;
 using System.ComponentModel;
-using System.Linq;
 using System.Data.Entity;
+using System.Linq;
 using System.Windows.Forms;
-using Muse.Model;
-using System.Reflection;
 
 namespace Muse {
 
     public partial class FormAddBill : Form {
-
         private RestoContext _db;
         private Bill _billToUpdate;
         private Order _orderToUpdate;
@@ -45,8 +43,7 @@ namespace Muse {
                 txtCustomerCode.Text = _billToUpdate.CustomerId.ToString();
                 txtCustomerName.Text = _billToUpdate.Customer.Name;
 
-                if (dgv.Rows.Count == 0)
-                {
+                if (dgv.Rows.Count == 0) {
                     editItem.Enabled = false;
                     deleteItem.Enabled = false;
                 }
@@ -188,13 +185,11 @@ namespace Muse {
             }
         }
 
-        private void saveAllItem_Click(object sender, EventArgs e)
-        {
+        private void saveAllItem_Click(object sender, EventArgs e) {
             DialogResult = DialogResult.OK;
             Close();
         }
 
         # endregion
     }
-
 }

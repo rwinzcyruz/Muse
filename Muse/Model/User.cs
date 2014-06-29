@@ -1,10 +1,10 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Muse.Model
-{
-    public class User
-    {
+namespace Muse.Model {
+
+    public class User {
+
         public int Id { get; set; }
 
         [Required, MaxLength(250)]

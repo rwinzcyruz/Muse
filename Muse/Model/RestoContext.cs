@@ -1,9 +1,9 @@
 ﻿using System.Data.Entity;
 
-namespace Muse.Model
-{
-    public class RestoContext : DbContext
-    {
+namespace Muse.Model {
+
+    public class RestoContext : DbContext {
+
         public DbSet<User> Users { get; set; }
 
         public DbSet<Customer> Customers { get; set; }

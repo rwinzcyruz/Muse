@@ -2,10 +2,10 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Muse.Model
-{
-    public class Order
-    {
+namespace Muse.Model {
+
+    public class Order {
+
         [Key, Column(Order = 1), Required]
         public int BillId { get; set; }
 

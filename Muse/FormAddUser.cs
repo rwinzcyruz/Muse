@@ -1,30 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Muse.Model;
+using System;
 using System.Windows.Forms;
-using Muse.Model;
 
-namespace Muse
-{
-    public partial class FormAddUser : Form
-    {
+namespace Muse {
+
+    public partial class FormAddUser : Form {
         private Action<User> _saveModel;
         private User _user;
         private bool _isNew = true;
 
-        public FormAddUser(Action<User> saveModel)
-        {
+        public FormAddUser(Action<User> saveModel) {
             InitializeComponent();
             _saveModel = saveModel;
         }
 
-        public FormAddUser(User user, Action<User> saveModel)
-        {
+        public FormAddUser(User user, Action<User> saveModel) {
             InitializeComponent();
             _user = user;
             _saveModel = saveModel;
@@ -36,26 +26,23 @@ namespace Muse
             txtUsername.Enabled = false;
         }
 
-        private void _fillForm()
-        {
+        # region Private Method
+
+        private void _fillForm() {
             txtName.Text = _user.Name;
             txtUsername.Text = _user.Username;
             txtPassword.Text = _user.Password;
             txtAddress.Text = _user.Address;
             txtEmail.Text = _user.Email;
             txtPhone.Text = _user.Phone;
-            if (_user.Gender == Gender.Male)
-            {
+            if (_user.Gender == Gender.Male) {
                 rdoMale.Checked = true;
-            }
-            else if (_user.Gender == Gender.Female)
-            {
+            } else if (_user.Gender == Gender.Female) {
                 rdoFemale.Checked = true;
             }
         }
 
-        private void _clearForm()
-        {
+        private void _clearForm() {
             txtName.Clear();
             txtUsername.Clear();
             txtPassword.Clear();
@@ -67,13 +54,15 @@ namespace Muse
             txtName.Select();
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            if (!Utility.RequiredCheck(errorProvider, txtName, txtUsername, txtPassword, txtEmail))
-            {
+        # endregion
+
+        # region Event Handler
+
+        private void btnAdd_Click(object sender, EventArgs e) {
+            if (!Utility.RequiredCheck(errorProvider, txtName, txtUsername, txtPassword, txtEmail)) {
                 return;
             }
-            
+
             var name = txtName.Text.Trim();
             var username = txtUsername.Text.Trim();
             var password = txtPassword.Text;
@@ -83,17 +72,13 @@ namespace Muse
             var gender = Gender.Unknown;
             var now = DateTime.Now;
 
-            if (rdoMale.Checked)
-            {
+            if (rdoMale.Checked) {
                 gender = Gender.Male;
-            }
-            else if (rdoFemale.Checked)
-            {
+            } else if (rdoFemale.Checked) {
                 gender = Gender.Female;
             }
 
-            _saveModel( new User
-            {
+            _saveModel(new User {
                 Name = name,
                 Username = username,
                 Password = password,
@@ -107,5 +92,7 @@ namespace Muse
 
             _clearForm();
         }
+
+        # endregion
     }
 }
