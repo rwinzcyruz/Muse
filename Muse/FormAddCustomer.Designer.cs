@@ -39,20 +39,20 @@
             this.lblGender = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pnlGender = new System.Windows.Forms.Panel();
             this.rdoFemale = new System.Windows.Forms.RadioButton();
             this.rdoMale = new System.Windows.Forms.RadioButton();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.groupBox1.SuspendLayout();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.pnlGender.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.Color.Transparent;
-            this.btnSave.Location = new System.Drawing.Point(174, 181);
+            this.btnSave.Location = new System.Drawing.Point(256, 165);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 4;
@@ -63,7 +63,7 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(6, 27);
+            this.lblName.Location = new System.Drawing.Point(20, 14);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(35, 13);
             this.lblName.TabIndex = 1;
@@ -72,15 +72,15 @@
             // txtName
             // 
             this.txtName.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txtName.Location = new System.Drawing.Point(96, 27);
+            this.txtName.Location = new System.Drawing.Point(116, 11);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(153, 20);
+            this.txtName.Size = new System.Drawing.Size(215, 20);
             this.txtName.TabIndex = 0;
             // 
             // lblAddress
             // 
             this.lblAddress.AutoSize = true;
-            this.lblAddress.Location = new System.Drawing.Point(4, 91);
+            this.lblAddress.Location = new System.Drawing.Point(18, 78);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(39, 13);
             this.lblAddress.TabIndex = 5;
@@ -88,15 +88,15 @@
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(97, 91);
+            this.txtAddress.Location = new System.Drawing.Point(117, 75);
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(152, 20);
+            this.txtAddress.Size = new System.Drawing.Size(214, 20);
             this.txtAddress.TabIndex = 1;
             // 
             // lblPhone
             // 
             this.lblPhone.AutoSize = true;
-            this.lblPhone.Location = new System.Drawing.Point(4, 123);
+            this.lblPhone.Location = new System.Drawing.Point(18, 110);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(46, 13);
             this.lblPhone.TabIndex = 7;
@@ -104,15 +104,15 @@
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(97, 125);
+            this.txtPhone.Location = new System.Drawing.Point(117, 109);
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(152, 20);
+            this.txtPhone.Size = new System.Drawing.Size(214, 20);
             this.txtPhone.TabIndex = 2;
             // 
             // lblGender
             // 
             this.lblGender.AutoSize = true;
-            this.lblGender.Location = new System.Drawing.Point(6, 60);
+            this.lblGender.Location = new System.Drawing.Point(20, 47);
             this.lblGender.Name = "lblGender";
             this.lblGender.Size = new System.Drawing.Size(71, 13);
             this.lblGender.TabIndex = 3;
@@ -121,7 +121,7 @@
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(4, 153);
+            this.lblEmail.Location = new System.Drawing.Point(18, 140);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(35, 13);
             this.lblEmail.TabIndex = 9;
@@ -129,38 +129,18 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(97, 155);
+            this.txtEmail.Location = new System.Drawing.Point(117, 139);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(152, 20);
+            this.txtEmail.Size = new System.Drawing.Size(214, 20);
             this.txtEmail.TabIndex = 3;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.pnlGender);
-            this.groupBox1.Controls.Add(this.lblName);
-            this.groupBox1.Controls.Add(this.btnSave);
-            this.groupBox1.Controls.Add(this.txtEmail);
-            this.groupBox1.Controls.Add(this.txtName);
-            this.groupBox1.Controls.Add(this.lblEmail);
-            this.groupBox1.Controls.Add(this.lblGender);
-            this.groupBox1.Controls.Add(this.lblAddress);
-            this.groupBox1.Controls.Add(this.txtAddress);
-            this.groupBox1.Controls.Add(this.txtPhone);
-            this.groupBox1.Controls.Add(this.lblPhone);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(275, 223);
-            this.groupBox1.TabIndex = 12;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Tambah Pelanggan";
             // 
             // pnlGender
             // 
             this.pnlGender.Controls.Add(this.rdoFemale);
             this.pnlGender.Controls.Add(this.rdoMale);
-            this.pnlGender.Location = new System.Drawing.Point(96, 60);
+            this.pnlGender.Location = new System.Drawing.Point(116, 44);
             this.pnlGender.Name = "pnlGender";
-            this.pnlGender.Size = new System.Drawing.Size(153, 20);
+            this.pnlGender.Size = new System.Drawing.Size(215, 20);
             this.pnlGender.TabIndex = 12;
             // 
             // rdoFemale
@@ -189,20 +169,38 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.pnlGender);
+            this.panel1.Controls.Add(this.lblName);
+            this.panel1.Controls.Add(this.lblPhone);
+            this.panel1.Controls.Add(this.btnSave);
+            this.panel1.Controls.Add(this.txtPhone);
+            this.panel1.Controls.Add(this.txtEmail);
+            this.panel1.Controls.Add(this.txtAddress);
+            this.panel1.Controls.Add(this.txtName);
+            this.panel1.Controls.Add(this.lblAddress);
+            this.panel1.Controls.Add(this.lblEmail);
+            this.panel1.Controls.Add(this.lblGender);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(360, 337);
+            this.panel1.TabIndex = 13;
+            // 
             // FormAddCustomer
             // 
             this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(299, 262);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(384, 361);
+            this.Controls.Add(this.panel1);
             this.Name = "FormAddCustomer";
             this.Text = "Form Tambah Pelanggan";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.pnlGender.ResumeLayout(false);
             this.pnlGender.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -219,11 +217,11 @@
         private System.Windows.Forms.Label lblGender;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel pnlGender;
         private System.Windows.Forms.RadioButton rdoFemale;
         private System.Windows.Forms.RadioButton rdoMale;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 
