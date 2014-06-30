@@ -14,10 +14,9 @@ namespace Muse {
             _saveModel = saveModel;
         }
 
-        public FormAddProduct(Product product, Action<Product> saveModel) {
+        public FormAddProduct(Product product) {
             InitializeComponent();
             _product = product;
-            _saveModel = saveModel;
             _fillForm();
             _isNew = false;
         }
@@ -63,11 +62,10 @@ namespace Muse {
 
                 _clearForm();
             } else {
-                _product.Name = name;
                 _product.Price = price;
                 _product.Description = desc;
+                _product.UpdatedAt = now;
 
-                _saveModel(_product);
                 Close();
             }
         }

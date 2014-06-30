@@ -14,10 +14,9 @@ namespace Muse {
             _saveModel = saveModel;
         }
 
-        public FormAddCustomer(Customer customer, Action<Customer> saveModel) {
+        public FormAddCustomer(Customer customer) {
             InitializeComponent();
             _customer = customer;
-            _saveModel = saveModel;
             _fillForm();
             _isNew = false;
             txtName.Enabled = false;
@@ -82,14 +81,12 @@ namespace Muse {
 
                 _clearForm();
             } else {
-                _customer.Name = name;
                 _customer.Gender = gender;
                 _customer.Address = address;
                 _customer.Email = email;
                 _customer.Phone = phone;
                 _customer.UpdatedAt = now;
 
-                _saveModel(_customer);
                 Close();
             }
         }

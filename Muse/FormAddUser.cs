@@ -14,10 +14,9 @@ namespace Muse {
             _saveModel = saveModel;
         }
 
-        public FormAddUser(User user, Action<User> saveModel) {
+        public FormAddUser(User user) {
             InitializeComponent();
             _user = user;
-            _saveModel = saveModel;
             _fillForm();
             _isNew = false;
             txtName.Enabled = false;
@@ -78,19 +77,28 @@ namespace Muse {
                 gender = Gender.Female;
             }
 
-            _saveModel(new User {
-                Name = name,
-                Username = username,
-                Password = password,
-                Gender = gender,
-                Address = address,
-                Email = email,
-                Phone = phone,
-                CreatedAt = now,
-                UpdatedAt = now
-            });
+            if (_isNew) {
+                _saveModel(new User {
+                    Name = name,
+                    Username = username,
+                    Password = password,
+                    Gender = gender,
+                    Address = address,
+                    Email = email,
+                    Phone = phone,
+                    CreatedAt = now,
+                    UpdatedAt = now
+                });
 
-            _clearForm();
+                _clearForm();
+            } else {
+                _user.Gender = gender;
+                _user.Address = address;
+                _user.Phone = phone;
+                _user.UpdatedAt = now;
+
+                Close();
+            }
         }
 
         # endregion

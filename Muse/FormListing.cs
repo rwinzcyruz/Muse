@@ -82,24 +82,15 @@ namespace Muse {
         private void btnEdit_Click(object sender, EventArgs e) {
             switch (_contract) {
                 case Contract.Customer:
-                    new FormAddCustomer(_db.Customers.Find(_getRowId()), customer => {
-                        _db.Customers.Attach(customer);
-                        _db.Entry(customer).State = EntityState.Modified;
-                    }).ShowDialog();
+                    new FormAddCustomer(_db.Customers.Local.SingleOrDefault(x => x.Id == _getRowId())).ShowDialog();
                     break;
 
                 case Contract.Product:
-                    new FormAddProduct(_db.Products.Find(_getRowId()), product => {
-                        _db.Products.Attach(product);
-                        _db.Entry(product).State = EntityState.Modified;
-                    }).ShowDialog();
+                    new FormAddProduct(_db.Products.Local.SingleOrDefault(x => x.Id == _getRowId())).ShowDialog();
                     break;
 
                 case Contract.User:
-                    new FormAddUser(_db.Users.Find(_getRowId()), user => {
-                        _db.Users.Attach(user);
-                        _db.Entry(user).State = EntityState.Modified;
-                    }).ShowDialog();
+                    new FormAddUser(_db.Users.Local.SingleOrDefault(x => x.Id == _getRowId())).ShowDialog();
                     break;
             }
 
