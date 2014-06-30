@@ -63,7 +63,7 @@ namespace Muse {
             }
 
             var name = txtName.Text.Trim();
-            var username = txtUsername.Text.Trim();
+            var username = txtUsername.Text.Trim().ToLower();
             var password = txtPassword.Text;
             var address = txtAddress.Text.Trim();
             var email = txtEmail.Text.Trim();
@@ -81,7 +81,7 @@ namespace Muse {
                 _saveModel(new User {
                     Name = name,
                     Username = username,
-                    Password = password,
+                    Password = Utility.SHA1Digest(password),
                     Gender = gender,
                     Address = address,
                     Email = email,

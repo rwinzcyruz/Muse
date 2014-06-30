@@ -63,6 +63,9 @@ namespace Muse {
         }
 
         private void btnCheckoutBill_Click(object sender, EventArgs e) {
+            _db.Bills.Local.SingleOrDefault(x => x.Id == _getRowId()).Paid = true;
+            _db.SaveChanges();
+            _Reload();
         }
 
         # endregion

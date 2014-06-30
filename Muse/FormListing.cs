@@ -128,23 +128,24 @@ namespace Muse {
                 return;
             }
 
+            var id = _getRowId();
             switch (_contract) {
                 case Contract.Customer:
-                    var dropCustomer = _db.Customers.SingleOrDefault(x => x.Id == _getRowId());
+                    var dropCustomer = _db.Customers.SingleOrDefault(x => x.Id == id);
                     if (dropCustomer != null) {
                         _db.Customers.Remove(dropCustomer);
                     }
                     break;
 
                 case Contract.Product:
-                    var dropProduct = _db.Products.SingleOrDefault(x => x.Id == _getRowId());
+                    var dropProduct = _db.Products.SingleOrDefault(x => x.Id == id);
                     if (dropProduct != null) {
                         _db.Products.Remove(dropProduct);
                     }
                     break;
 
                 case Contract.User:
-                    var dropUsers = _db.Users.SingleOrDefault(x => x.Id == _getRowId());
+                    var dropUsers = _db.Users.SingleOrDefault(x => x.Id == id);
                     if (dropUsers != null) {
                         _db.Users.Remove(dropUsers);
                     }

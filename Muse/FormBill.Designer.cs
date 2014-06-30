@@ -205,7 +205,6 @@
         private System.Windows.Forms.Button btnCheckoutBill;
         private System.Windows.Forms.DataGridView dgvUnpaid;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ordersDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource unpaidBindingSource;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
