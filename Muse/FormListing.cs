@@ -9,7 +9,7 @@ namespace Muse {
 
     public partial class FormListing : Form {
         private Contract _contract;
-        private Action<string, string> _assignData;
+        private Action<Object> _assignData;
         private RestoContext _db;
         private int _rowIndex;
 
@@ -18,7 +18,7 @@ namespace Muse {
             _contract = contract;
         }
 
-        public FormListing(Contract contract, Action<string, string> assignData) {
+        public FormListing(Contract contract, Action<Object> assignData) {
             InitializeComponent();
             _contract = contract;
             _assignData = assignData;
@@ -99,11 +99,24 @@ namespace Muse {
         }
 
         private void dgvCustomer_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
-            if (_assignData != null) {
-                var cells = dgv.Rows[e.RowIndex].Cells;
-                _assignData(cells["Id"].Value.ToString(), cells["Name"].Value.ToString());
-                Close();
+            if (_assignData == null) {
+                return;
             }
+
+            switch (_contract) {
+                case Contract.Customer:
+                    _assignData(_db.Customers.Local.SingleOrDefault(x => x.Id == _getRowId()));
+                    break;
+
+                case Contract.User:
+                    _assignData(_db.Users.Local.SingleOrDefault(x => x.Id == _getRowId()));
+                    break;
+
+                case Contract.Product:
+                    _assignData(_db.Products.Local.SingleOrDefault(x => x.Id == _getRowId()));
+                    break;
+            }
+            Close();
         }
 
         private void dgv_RowEnter(object sender, DataGridViewCellEventArgs e) {

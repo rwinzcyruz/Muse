@@ -32,7 +32,7 @@
             this.btnCreateBill = new System.Windows.Forms.Button();
             this.btnUpdateBill = new System.Windows.Forms.Button();
             this.btnDeleteBill = new System.Windows.Forms.Button();
-            this.btnReportNota = new System.Windows.Forms.Button();
+            this.btnCheckoutBill = new System.Windows.Forms.Button();
             this.dgvUnpaid = new System.Windows.Forms.DataGridView();
             this.unpaidBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
@@ -81,15 +81,16 @@
             this.btnDeleteBill.UseVisualStyleBackColor = true;
             this.btnDeleteBill.Click += new System.EventHandler(this.btnDeleteBill_Click);
             // 
-            // btnReportNota
+            // btnCheckoutBill
             // 
-            this.btnReportNota.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnReportNota.Location = new System.Drawing.Point(799, 3);
-            this.btnReportNota.Name = "btnReportNota";
-            this.btnReportNota.Size = new System.Drawing.Size(118, 23);
-            this.btnReportNota.TabIndex = 3;
-            this.btnReportNota.Text = "Laporan Nota";
-            this.btnReportNota.UseVisualStyleBackColor = true;
+            this.btnCheckoutBill.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCheckoutBill.Location = new System.Drawing.Point(799, 3);
+            this.btnCheckoutBill.Name = "btnCheckoutBill";
+            this.btnCheckoutBill.Size = new System.Drawing.Size(118, 23);
+            this.btnCheckoutBill.TabIndex = 3;
+            this.btnCheckoutBill.Text = "Bayar Tagihan";
+            this.btnCheckoutBill.UseVisualStyleBackColor = true;
+            this.btnCheckoutBill.Click += new System.EventHandler(this.btnCheckoutBill_Click);
             // 
             // dgvUnpaid
             // 
@@ -113,7 +114,7 @@
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.btnReportNota);
+            this.panel1.Controls.Add(this.btnCheckoutBill);
             this.panel1.Controls.Add(this.btnCreateBill);
             this.panel1.Controls.Add(this.btnUpdateBill);
             this.panel1.Controls.Add(this.btnDeleteBill);
@@ -201,7 +202,7 @@
         private System.Windows.Forms.Button btnCreateBill;
         private System.Windows.Forms.Button btnUpdateBill;
         private System.Windows.Forms.Button btnDeleteBill;
-        private System.Windows.Forms.Button btnReportNota;
+        private System.Windows.Forms.Button btnCheckoutBill;
         private System.Windows.Forms.DataGridView dgvUnpaid;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ordersDataGridViewTextBoxColumn;

@@ -22,6 +22,7 @@ namespace Muse {
             dgvPaid.AutoGenerateColumns = true;
 
             _db = new RestoContext();
+            _db.Bills.Load();
             _Reload();
         }
 
@@ -33,11 +34,11 @@ namespace Muse {
         # region Event Handler
 
         private void btnCreateBill_Click(object sender, EventArgs e) {
-            var result = new FormAddBill().ShowDialog();
+            var result = new FormAddBill(bill => _db.Bills.Add(bill)).ShowDialog();
 
             if (result == DialogResult.OK) {
+                _db.SaveChanges();
                 _Reload();
-                dgvUnpaid.Refresh();
             }
         }
 
@@ -55,10 +56,13 @@ namespace Muse {
 
         private void btnDeleteBill_Click(object sender, EventArgs e) {
             if (Utility.ConfirmDelete()) {
-                _db.Bills.Remove(_db.Bills.Find(_getRowId()));
+                _db.Bills.Remove(_db.Bills.Local.SingleOrDefault(x => x.Id == _getRowId()));
                 _db.SaveChanges();
                 _Reload();
             }
+        }
+
+        private void btnCheckoutBill_Click(object sender, EventArgs e) {
         }
 
         # endregion
@@ -70,15 +74,15 @@ namespace Muse {
         }
 
         private void _UpdateBill(int id) {
-            var result = new FormAddBill(id).ShowDialog();
+            var result = new FormAddBill(_db.Bills.Local.SingleOrDefault(x => x.Id == id)).ShowDialog();
 
             if (result == DialogResult.OK) {
+                _db.SaveChanges();
                 _Reload();
             }
         }
 
         private void _Reload() {
-            _db.Bills.Load();
             unpaidBindingSource.DataSource = _db.Bills.Local
                 .Where(x => x.Paid == false)
                 .OrderByDescending(x => x.UpdatedAt)
@@ -99,7 +103,6 @@ namespace Muse {
                     TaxFee = x.TaxFee,
                     TotalFee = x.TotalFee
                 }).ToList();
-            dgvUnpaid.Refresh();
         }
 
         # endregion
