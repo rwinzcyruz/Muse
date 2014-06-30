@@ -55,6 +55,10 @@ namespace Muse {
             this._db.Dispose();
         }
 
+        private int _getRowId() {
+            return int.Parse(dgv.Rows[_rowIndex].Cells["Id"].Value.ToString());
+        }
+
         # region Event Handler
 
         private void btnAdd_Click(object sender, EventArgs e) {
@@ -76,25 +80,23 @@ namespace Muse {
         }
 
         private void btnEdit_Click(object sender, EventArgs e) {
-            var id = int.Parse(dgv.Rows[_rowIndex].Cells["id"].Value.ToString());
-
             switch (_contract) {
                 case Contract.Customer:
-                    new FormAddCustomer(_db.Customers.Find(id), customer => {
+                    new FormAddCustomer(_db.Customers.Find(_getRowId()), customer => {
                         _db.Customers.Attach(customer);
                         _db.Entry(customer).State = EntityState.Modified;
                     }).ShowDialog();
                     break;
 
                 case Contract.Product:
-                    new FormAddProduct(_db.Products.Find(id), product => {
+                    new FormAddProduct(_db.Products.Find(_getRowId()), product => {
                         _db.Products.Attach(product);
                         _db.Entry(product).State = EntityState.Modified;
                     }).ShowDialog();
                     break;
 
                 case Contract.User:
-                    new FormAddUser(_db.Users.Find(id), user => {
+                    new FormAddUser(_db.Users.Find(_getRowId()), user => {
                         _db.Users.Attach(user);
                         _db.Entry(user).State = EntityState.Modified;
                     }).ShowDialog();
@@ -108,7 +110,7 @@ namespace Muse {
         private void dgvCustomer_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
             if (_assignData != null) {
                 var cells = dgv.Rows[e.RowIndex].Cells;
-                _assignData(cells["id"].Value.ToString(), cells["name"].Value.ToString());
+                _assignData(cells["Id"].Value.ToString(), cells["Name"].Value.ToString());
                 Close();
             }
         }
@@ -122,24 +124,23 @@ namespace Muse {
                 return;
             }
 
-            var id = int.Parse(dgv.Rows[_rowIndex].Cells["id"].Value.ToString());
             switch (_contract) {
                 case Contract.Customer:
-                    var dropCustomer = _db.Customers.SingleOrDefault(x => x.Id == id);
+                    var dropCustomer = _db.Customers.SingleOrDefault(x => x.Id == _getRowId());
                     if (dropCustomer != null) {
                         _db.Customers.Remove(dropCustomer);
                     }
                     break;
 
                 case Contract.Product:
-                    var dropProduct = _db.Products.SingleOrDefault(x => x.Id == id);
+                    var dropProduct = _db.Products.SingleOrDefault(x => x.Id == _getRowId());
                     if (dropProduct != null) {
                         _db.Products.Remove(dropProduct);
                     }
                     break;
 
                 case Contract.User:
-                    var dropUsers = _db.Users.SingleOrDefault(x => x.Id == id);
+                    var dropUsers = _db.Users.SingleOrDefault(x => x.Id == _getRowId());
                     if (dropUsers != null) {
                         _db.Users.Remove(dropUsers);
                     }

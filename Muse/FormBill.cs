@@ -42,8 +42,7 @@ namespace Muse {
         }
 
         private void btnUpdateBill_Click(object sender, EventArgs e) {
-            var id = int.Parse(dgvUnpaid.Rows[_rowIndex].Cells["BillId"].Value.ToString());
-            _UpdateBill(id);
+            _UpdateBill(_getRowId());
         }
 
         private void dgv_RowEnter(object sender, DataGridViewCellEventArgs e) {
@@ -51,14 +50,12 @@ namespace Muse {
         }
 
         private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
-            var id = int.Parse(dgvUnpaid.Rows[e.RowIndex].Cells["BillId"].Value.ToString());
-            _UpdateBill(id);
+            _UpdateBill(_getRowId());
         }
 
         private void btnDeleteBill_Click(object sender, EventArgs e) {
             if (Utility.ConfirmDelete()) {
-                var id = int.Parse(dgvUnpaid.Rows[_rowIndex].Cells["BillId"].Value.ToString());
-                _db.Bills.Remove(_db.Bills.Find(id));
+                _db.Bills.Remove(_db.Bills.Find(_getRowId()));
                 _db.SaveChanges();
                 _Reload();
             }
@@ -67,6 +64,10 @@ namespace Muse {
         # endregion
 
         # region Private Method
+
+        private int _getRowId() {
+            return int.Parse(dgvUnpaid.Rows[_rowIndex].Cells["BillId"].Value.ToString());
+        }
 
         private void _UpdateBill(int id) {
             var result = new FormAddBill(id).ShowDialog();
