@@ -78,26 +78,26 @@ namespace Muse {
 
         private void _Reload() {
             _db.Bills.Load();
-            unpaidBindingSource.DataSource = (from x in _db.Bills.Local
-                                              where x.Paid == false
-                                              orderby x.UpdatedAt descending
-                                              select new BillViewModel { 
-                                                  BillId = x.Id,
-                                                  CustomerName = x.Customer.Name,
-                                                  Total = x.Total,
-                                                  TaxFee = x.TaxFee,
-                                                  TotalFee = x.TotalFee
-                                              }).ToList();
-            paidBindingSource.DataSource = (from x in _db.Bills.Local
-                                            where x.Paid == true
-                                            orderby x.UpdatedAt descending
-                                            select new BillViewModel {
-                                                BillId = x.Id,
-                                                CustomerName = x.Customer.Name,
-                                                Total = x.Total,
-                                                TaxFee = x.TaxFee,
-                                                TotalFee = x.TotalFee
-                                            }).ToList();
+            unpaidBindingSource.DataSource = _db.Bills.Local
+                .Where(x => x.Paid == false)
+                .OrderByDescending(x => x.UpdatedAt)
+                .Select(x => new BillViewModel {
+                    BillId = x.Id,
+                    CustomerName = x.Customer.Name,
+                    Total = x.Total,
+                    TaxFee = x.TaxFee,
+                    TotalFee = x.TotalFee
+                }).ToList();
+            paidBindingSource.DataSource = _db.Bills.Local
+                .Where(x => x.Paid == true)
+                .OrderByDescending(x => x.UpdatedAt)
+                .Select(x => new BillViewModel {
+                    BillId = x.Id,
+                    CustomerName = x.Customer.Name,
+                    Total = x.Total,
+                    TaxFee = x.TaxFee,
+                    TotalFee = x.TotalFee
+                }).ToList();
             dgvUnpaid.Refresh();
         }
 

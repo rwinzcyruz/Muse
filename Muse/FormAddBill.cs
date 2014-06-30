@@ -77,13 +77,14 @@ namespace Muse {
 
         private void _Reload() {
             _db.Bills.Where(x => x.Id == _billToUpdate.Id).Include(x => x.Orders.Select(o => o.Product)).Load();
-            bindingSource.DataSource = _db.Orders.Local.Select(x => new OrderViewModel { 
-                ProductId = x.ProductId, 
-                ProductName = x.Product.Name, 
-                ProductPrice = x.Product.Price, 
-                Quantity = x.Quantity, 
-                Total = x.Total 
-            }).ToList();
+            bindingSource.DataSource = _db.Orders.Local
+                .Select(x => new OrderViewModel {
+                    ProductId = x.ProductId,
+                    ProductName = x.Product.Name,
+                    ProductPrice = x.Product.Price,
+                    Quantity = x.Quantity,
+                    Total = x.Total
+                }).ToList();
         }
 
         private void _ClearForm() {
