@@ -12,7 +12,7 @@ namespace Muse.Model {
         public string Name { get; set; }
 
         [Required]
-        public int Price { get; set; }
+        public decimal Price { get; set; }
 
         [MaxLength(1000)]
         public string Description { get; set; }

@@ -12,10 +12,10 @@ namespace Muse.ViewModel {
 
         public string CustomerName { get; set; }
 
-        public int Total { get; set; }
+        public decimal Total { get; set; }
 
-        public int TaxFee { get; set; }
+        public decimal TaxFee { get; set; }
 
-        public int TotalFee { get; set; }
+        public decimal TotalFee { get; set; }
     }
 }

@@ -17,9 +17,9 @@ namespace Muse.Model {
         [Required]
         public bool Paid { get; set; }
 
-        public int Total {
+        public decimal Total {
             get {
-                var sum = 0;
+                var sum = 0m;
                 foreach (var order in Orders) {
                     sum += order.Total;
                 }
@@ -27,9 +27,9 @@ namespace Muse.Model {
             }
         }
 
-        public int TaxFee { get { return Convert.ToInt32(Tax * Total); } }
+        public decimal TaxFee { get { return Convert.ToDecimal((decimal)Tax * Total); } }
 
-        public int TotalFee { get { return Total + TaxFee; } }
+        public decimal TotalFee { get { return Total + TaxFee; } }
 
         [Required]
         public DateTime CreatedAt { get; set; }

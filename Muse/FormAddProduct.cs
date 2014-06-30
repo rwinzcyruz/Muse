@@ -47,7 +47,7 @@ namespace Muse {
             }
 
             var name = txtName.Text.Trim();
-            var price = int.Parse(txtPrice.Text);
+            var price = decimal.Parse(txtPrice.Text);
             var desc = txtName.Text.Trim();
             var now = DateTime.Now;
 
